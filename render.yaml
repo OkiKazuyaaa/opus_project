@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: clean-my-project
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run pachinko_dashboard.py --server.port $PORT --server.enableCORS false

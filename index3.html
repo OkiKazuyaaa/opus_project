@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>気象庁データダウンロード</title>
+    <script>
+    const stations = {{ station_dict | default({}) | tojson | safe}};
+
+
+        function updateStations() {
+            const pref = document.getElementById("prefecture").value;
+            const stationSelect = document.getElementById("station");
+            stationSelect.innerHTML = "";
+
+            if (!stations[pref]) {
+                    const opt = document.createElement("option");
+                    opt.value="";
+                    opt.text="観測地点が見つかりません。"
+                    stationSelect.appendChild(opt);
+                    return;
+            }
+            stations[pref].forEach(name=>{
+                const opt=document.createElement("option");
+                opt.value=name;
+                opt.text=name;
+                stationSelect.appendChild(opt);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>気象庁 過去天気データ ダウンロード</h1>
+    <form method="POST" action="/download">
+        <label>年:</label>
+        <input type="text" name="year" required><br>
+
+        <label>月:</label>
+        <input type="text" name="month" required><br>
+
+        <label>都道府県:</label>
+        <select id="prefecture" name="prefecture" onchange="updateStations()" required>
+            <option disabled selected>選択してください</option>
+            {% for pref in station_dict.keys() %}
+                <option value="{{ pref }}">{{ pref }}</option>
+            {% endfor %}
+        </select><br>
+        
+        <label>市区町村（観測地点）:</label>
+        <select id="station" name="station" required>
+            <option disabled selected>先に都道府県を選択</option>
+        </select><br>
+
+        <button type="submit">ダウンロード</button>
+    </form>
+</body>
+</html>

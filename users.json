@@ -1,0 +1,38 @@
+{
+  "miyazaki@example.com": {
+    "password_hash": "$2b$12$6L7CWTGt2UEnCXJGe4qk3OZ.0yOubKfjActAMGB8qwjeinU.72fL.",
+    "store_name": "オーパス宮崎本店"
+  },
+  "komatsu@example.com": {
+    "password_hash": "$2b$12$VvotepgfFL//NKm2wR.xBOdC9ShbRsY/JGyiAl.JkQ6hFuAYf7fne",
+    "store_name": "オーパス小松"
+  },
+  "takanabe@example.com": {
+    "password_hash": "$2b$12$1E15LHVppu0BhCcEsoTW1.j7XWHchn45xyl/svdAMou9e6MK66CTC",
+    "store_name": "オーパス高鍋"
+  },
+  "nichinan@example.com": {
+    "password_hash": "$2b$12$nhyGDjximKrbgFKnwRluquIZuplsDbJDvXkGa14/r4eWf7qJenhPq",
+    "store_name": "オーパス日南"
+  },
+  "nobeoka@example.com": {
+    "password_hash": "$2b$12$Wnj3YmDI90E0dTDqsxZ3t.PtoKJGdSEAcxjUPEnFEJYLjjPD0XKPS",
+    "store_name": "オーパス延岡"
+  },
+  "mimata@example.com": {
+    "password_hash": "$2b$12$8vgWfDCZm.yQunzOY4YcDuc17UnM5F10UlUSIK7q5N0bUJHlx7DmO",
+    "store_name": "オーパス三股"
+  },
+  "miyakonojo@example.com": {
+    "password_hash": "$2b$12$mm0wflZ5P0kJU/226uefGumF7T8VTR4Lc3jxqnmT6UzA1imfuH/nO",
+    "store_name": "オーパス都城"
+  },
+  "kanoya@example.com": {
+    "password_hash": "$2b$12$0QoghKI9S4LfbM0uuw8qNuYxe7NY1dST0omrTofdxFQCi4LJ70l/i",
+    "store_name": "オーパス鹿屋"
+  },
+  "kokoronohitomi2003@keio.jp": {
+    "password_hash": "$2b$12$GXgB8UkOy0TNJA6NHpB7wOcdPZ9HToL.QR5v3c2dmdXAe6q1H5mx6",
+    "store_name": "管理者"
+  }
+}

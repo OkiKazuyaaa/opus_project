@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_fc261e0769cc1ccdc150f13d7c13caa3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_fc261e0769cc1ccdc150f13d7c13caa3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_fc261e0769cc1ccdc150f13d7c13caa3 = L.map(
+                "map_fc261e0769cc1ccdc150f13d7c13caa3",
+                {
+                    center: [29.761749070857803, 121.45713846790159],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+
+            
+
+        
+    
+            var tile_layer_382062cb4f372ea66df55afe274fa137 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_382062cb4f372ea66df55afe274fa137.addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+    var color_map_6d3d8e3689d47591b16dc90f20d6c1f5 = {};
+
+    
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.color = d3.scale.threshold()
+              .domain([0.0, 0.0001429552462377271, 0.0002859104924754542, 0.0004288657387131813, 0.0005718209849509084, 0.0007147762311886355, 0.0008577314774263626, 0.0010006867236640898, 0.0011436419699018168, 0.001286597216139544, 0.001429552462377271, 0.001572507708614998, 0.0017154629548527252, 0.0018584182010904524, 0.0020013734473281796, 0.0021443286935659066, 0.0022872839398036336, 0.002430239186041361, 0.002573194432279088, 0.002716149678516815, 0.002859104924754542, 0.0030020601709922694, 0.003145015417229996, 0.0032879706634677233, 0.0034309259097054503, 0.0035738811559431777, 0.0037168364021809047, 0.0038597916484186317, 0.004002746894656359, 0.004145702140894086, 0.004288657387131813, 0.00443161263336954, 0.004574567879607267, 0.0047175231258449945, 0.004860478372082722, 0.0050034336183204485, 0.005146388864558176, 0.0052893441107959025, 0.00543229935703363, 0.0055752546032713565, 0.005718209849509084, 0.005861165095746811, 0.006004120341984539, 0.006147075588222265, 0.006290030834459992, 0.006432986080697719, 0.006575941326935447, 0.006718896573173173, 0.006861851819410901, 0.007004807065648628, 0.0071477623118863555, 0.007290717558124082, 0.0074336728043618095, 0.007576628050599536, 0.0077195832968372635, 0.00786253854307499, 0.008005493789312718, 0.008148449035550443, 0.008291404281788171, 0.008434359528025898, 0.008577314774263626, 0.008720270020501353, 0.00886322526673908, 0.009006180512976808, 0.009149135759214534, 0.009292091005452262, 0.009435046251689989, 0.009578001497927716, 0.009720956744165444, 0.00986391199040317, 0.010006867236640897, 0.010149822482878625, 0.010292777729116352, 0.010435732975354078, 0.010578688221591805, 0.010721643467829532, 0.01086459871406726, 0.011007553960304986, 0.011150509206542713, 0.011293464452780441, 0.011436419699018168, 0.011579374945255896, 0.011722330191493623, 0.01186528543773135, 0.012008240683969077, 0.012151195930206804, 0.01229415117644453, 0.012437106422682259, 0.012580061668919984, 0.012723016915157712, 0.012865972161395439, 0.013008927407633165, 0.013151882653870893, 0.01329483790010862, 0.013437793146346346, 0.013580748392584075, 0.013723703638821801, 0.01386665888505953, 0.014009614131297256, 0.014152569377534983, 0.014295524623772711, 0.014438479870010438, 0.014581435116248164, 0.014724390362485892, 0.014867345608723619, 0.015010300854961346, 0.015153256101199072, 0.015296211347436799, 0.015439166593674527, 0.015582121839912253, 0.01572507708614998, 0.01586803233238771, 0.016010987578625437, 0.01615394282486316, 0.016296898071100886, 0.016439853317338618, 0.016582808563576343, 0.01672576380981407, 0.016868719056051796, 0.017011674302289524, 0.017154629548527252, 0.01729758479476498, 0.017440540041002706, 0.017583495287240434, 0.01772645053347816, 0.01786940577971589, 0.018012361025953615, 0.018155316272191344, 0.01829827151842907, 0.018441226764666793, 0.018584182010904525, 0.01872713725714225, 0.018870092503379978, 0.019013047749617703, 0.01915600299585543, 0.019298958242093156, 0.019441913488330888, 0.019584868734568613, 0.01972782398080634, 0.019870779227044066, 0.020013734473281794, 0.020156689719519522, 0.02029964496575725, 0.020442600211994975, 0.020585555458232704, 0.02072851070447043, 0.020871465950708157, 0.021014421196945885, 0.02115737644318361, 0.021300331689421338, 0.021443286935659063, 0.02158624218189679, 0.02172919742813452, 0.021872152674372248, 0.022015107920609973, 0.0221580631668477, 0.022301018413085426, 0.022443973659323158, 0.022586928905560882, 0.02272988415179861, 0.022872839398036336, 0.02301579464427406, 0.023158749890511792, 0.023301705136749517, 0.023444660382987245, 0.02358761562922497, 0.0237305708754627, 0.023873526121700423, 0.024016481367938155, 0.02415943661417588, 0.024302391860413608, 0.024445347106651333, 0.02458830235288906, 0.02473125759912679, 0.024874212845364518, 0.025017168091602243, 0.025160123337839967, 0.025303078584077696, 0.025446033830315424, 0.025588989076553152, 0.025731944322790877, 0.025874899569028605, 0.02601785481526633, 0.026160810061504062, 0.026303765307741787, 0.026446720553979515, 0.02658967580021724, 0.026732631046454968, 0.026875586292692693, 0.027018541538930425, 0.02716149678516815, 0.027304452031405878, 0.027447407277643603, 0.027590362523881327, 0.02773331777011906, 0.027876273016356784, 0.028019228262594512, 0.028162183508832237, 0.028305138755069965, 0.028448094001307694, 0.028591049247545422, 0.028734004493783147, 0.028876959740020875, 0.0290199149862586, 0.029162870232496328, 0.029305825478734056, 0.029448780724971785, 0.02959173597120951, 0.029734691217447238, 0.029877646463684963, 0.03002060170992269, 0.03016355695616042, 0.030306512202398144, 0.030449467448635872, 0.030592422694873597, 0.03073537794111133, 0.030878333187349054, 0.031021288433586782, 0.031164243679824507, 0.031307198926062235, 0.03145015417229996, 0.03159310941853769, 0.03173606466477542, 0.03187901991101315, 0.03202197515725087, 0.0321649304034886, 0.03230788564972632, 0.032450840895964055, 0.03259379614220177, 0.032736751388439504, 0.032879706634677236, 0.03302266188091496, 0.033165617127152686, 0.03330857237339041, 0.03345152761962814, 0.033594482865865874, 0.03373743811210359, 0.033880393358341324, 0.03402334860457905, 0.03416630385081678, 0.034309259097054505, 0.03445221434329223, 0.03459516958952996, 0.03473812483576768, 0.03488108008200541, 0.03502403532824314, 0.03516699057448087, 0.03530994582071859, 0.03545290106695632, 0.03559585631319405, 0.03573881155943178, 0.0358817668056695, 0.03602472205190723, 0.036167677298144955, 0.03631063254438269, 0.03645358779062041, 0.03659654303685814, 0.03673949828309587, 0.036882453529333586, 0.03702540877557132, 0.03716836402180905, 0.037311319268046775, 0.0374542745142845, 0.037597229760522224, 0.037740185006759956, 0.03788314025299768, 0.038026095499235406, 0.03816905074547314, 0.03831200599171086, 0.038454961237948594, 0.03859791648418631, 0.038740871730424044, 0.038883826976661776, 0.03902678222289949, 0.039169737469137225, 0.03931269271537495, 0.03945564796161268, 0.03959860320785041, 0.03974155845408813, 0.03988451370032586, 0.04002746894656359, 0.04017042419280131, 0.040313379439039045, 0.04045633468527677, 0.0405992899315145, 0.04074224517775222, 0.04088520042398995, 0.04102815567022768, 0.04117111091646541, 0.04131406616270313, 0.04145702140894086, 0.04159997665517859, 0.041742931901416314, 0.04188588714765404, 0.04202884239389177, 0.042171797640129495, 0.04231475288636722, 0.042457708132604945, 0.042600663378842676, 0.04274361862508041, 0.042886573871318126, 0.04302952911755586, 0.04317248436379358, 0.043315439610031314, 0.04345839485626904, 0.043601350102506764, 0.043744305348744496, 0.043887260594982214, 0.044030215841219945, 0.04417317108745768, 0.0443161263336954, 0.04445908157993313, 0.04460203682617085, 0.04474499207240858, 0.044887947318646315, 0.04503090256488403, 0.045173857811121765, 0.04531681305735949, 0.04545976830359722, 0.045602723549834946, 0.04574567879607267, 0.0458886340423104, 0.04603158928854812, 0.04617454453478585, 0.046317499781023584, 0.04646045502726131, 0.046603410273499034, 0.04674636551973676, 0.04688932076597449, 0.04703227601221222, 0.04717523125844994, 0.04731818650468767, 0.0474611417509254, 0.04760409699716313, 0.047747052243400846, 0.04789000748963858, 0.04803296273587631, 0.04817591798211403, 0.04831887322835176, 0.048461828474589484, 0.048604783720827216, 0.04874773896706494, 0.048890694213302666, 0.0490336494595404, 0.04917660470577812, 0.04931955995201585, 0.04946251519825358, 0.049605470444491304, 0.049748425690729035, 0.04989138093696675, 0.050034336183204485, 0.05017729142944222, 0.050320246675679935, 0.050463201921917666, 0.05060615716815539, 0.05074911241439312, 0.05089206766063085, 0.05103502290686857, 0.051177978153106304, 0.05132093339934403, 0.051463888645581754, 0.051606843891819486, 0.05174979913805721, 0.05189275438429494, 0.05203570963053266, 0.05217866487677039, 0.052321620123008124, 0.05246457536924585, 0.05260753061548357, 0.0527504858617213, 0.05289344110795903, 0.05303639635419675, 0.05317935160043448, 0.05332230684667221, 0.053465262092909936, 0.05360821733914766, 0.053751172585385386, 0.05389412783162312, 0.05403708307786085, 0.05418003832409857, 0.0543229935703363, 0.054465948816574024, 0.054608904062811756, 0.05475185930904948, 0.054894814555287205, 0.05503776980152494, 0.055180725047762655, 0.05532368029400039, 0.05546663554023812, 0.05560959078647584, 0.05575254603271357, 0.05589550127895129, 0.056038456525189025, 0.056181411771426756, 0.056324367017664474, 0.056467322263902206, 0.05661027751013993, 0.05675323275637766, 0.05689618800261539, 0.05703914324885311, 0.057182098495090844, 0.05732505374132856, 0.057468008987566294, 0.05761096423380402, 0.05775391948004175, 0.057896874726279475, 0.0580398299725172, 0.05818278521875493, 0.058325740464992656, 0.05846869571123038, 0.05861165095746811, 0.05875460620370584, 0.05889756144994357, 0.05904051669618129, 0.05918347194241902, 0.05932642718865675, 0.059469382434894476, 0.0596123376811322, 0.059755292927369925, 0.05989824817360766, 0.06004120341984538, 0.06018415866608311, 0.06032711391232084, 0.06047006915855856, 0.06061302440479629, 0.06075597965103402, 0.060898934897271745, 0.06104189014350948, 0.061184845389747194, 0.061327800635984926, 0.06147075588222266, 0.06161371112846038, 0.06175666637469811, 0.06189962162093583, 0.062042576867173564, 0.06218553211341129, 0.062328487359649014, 0.062471442605886746, 0.06261439785212447, 0.0627573530983622, 0.06290030834459992, 0.06304326359083766, 0.06318621883707538, 0.06332917408331311, 0.06347212932955083, 0.06361508457578856, 0.0637580398220263, 0.06390099506826401, 0.06404395031450175, 0.06418690556073946, 0.0643298608069772, 0.06447281605321492, 0.06461577129945265, 0.06475872654569038, 0.06490168179192811, 0.06504463703816583, 0.06518759228440354, 0.06533054753064128, 0.06547350277687901, 0.06561645802311673, 0.06575941326935447, 0.0659023685155922, 0.06604532376182992, 0.06618827900806766, 0.06633123425430537, 0.0664741895005431, 0.06661714474678082, 0.06676009999301856, 0.06690305523925628, 0.06704601048549401, 0.06718896573173175, 0.06733192097796946, 0.06747487622420718, 0.06761783147044492, 0.06776078671668265, 0.06790374196292037, 0.0680466972091581, 0.06818965245539584, 0.06833260770163356, 0.06847556294787127, 0.06861851819410901, 0.06876147344034673, 0.06890442868658446, 0.0690473839328222, 0.06919033917905992, 0.06933329442529765, 0.06947624967153536, 0.0696192049177731, 0.06976216016401082, 0.06990511541024855, 0.07004807065648629, 0.07019102590272401, 0.07033398114896174, 0.07047693639519947, 0.07061989164143719, 0.07076284688767491, 0.07090580213391263, 0.07104875738015037, 0.0711917126263881, 0.07133466787262582])
+              .range(['#ffffccff', '#ffffccff', '#ffffcbff', '#ffffcaff', '#fffec9ff', '#fffec9ff', '#fffec8ff', '#fffdc7ff', '#fffdc7ff', '#fffdc6ff', '#fffdc5ff', '#fffcc5ff', '#fffcc4ff', '#fffcc3ff', '#fffbc2ff', '#fffbc2ff', '#fffbc1ff', '#fffbc0ff', '#fffac0ff', '#fffabfff', '#fffabeff', '#fff9bdff', '#fff9bdff', '#fff9bcff', '#fff9bbff', '#fff8bbff', '#fff8baff', '#fff8b9ff', '#fff7b8ff', '#fff7b8ff', '#fff7b7ff', '#fff7b6ff', '#fff6b6ff', '#fff6b5ff', '#fff6b4ff', '#fff5b4ff', '#fff5b3ff', '#fff5b2ff', '#fff4b1ff', '#fff4b1ff', '#fff4b0ff', '#fff4afff', '#fff3afff', '#fff3aeff', '#fff3adff', '#fff2acff', '#fff2acff', '#fff2abff', '#fff2aaff', '#fff1aaff', '#fff1a9ff', '#fff1a8ff', '#fff0a7ff', '#fff0a7ff', '#fff0a6ff', '#fff0a5ff', '#ffefa5ff', '#ffefa4ff', '#ffefa3ff', '#ffeea3ff', '#ffeea2ff', '#ffeea1ff', '#ffeea0ff', '#ffeda0ff', '#ffed9fff', '#ffed9eff', '#ffec9eff', '#ffec9dff', '#ffec9cff', '#ffeb9cff', '#ffeb9bff', '#ffeb9aff', '#ffea9aff', '#ffea99ff', '#ffea98ff', '#ffe998ff', '#ffe997ff', '#ffe996ff', '#ffe896ff', '#ffe895ff', '#ffe894ff', '#ffe794ff', '#ffe793ff', '#ffe792ff', '#ffe692ff', '#ffe691ff', '#ffe690ff', '#ffe68fff', '#ffe58fff', '#ffe58eff', '#ffe58dff', '#ffe48dff', '#ffe48cff', '#ffe48bff', '#ffe38bff', '#ffe38aff', '#ffe389ff', '#ffe289ff', '#ffe288ff', '#ffe287ff', '#ffe187ff', '#ffe186ff', '#ffe185ff', '#ffe085ff', '#ffe084ff', '#ffe083ff', '#ffdf83ff', '#ffdf82ff', '#ffdf81ff', '#ffde81ff', '#ffde80ff', '#ffde7fff', '#ffdd7fff', '#ffdd7eff', '#ffdd7dff', '#ffdc7dff', '#ffdc7cff', '#ffdc7bff', '#ffdc7bff', '#ffdb7aff', '#ffdb79ff', '#ffdb78ff', '#ffda78ff', '#ffda77ff', '#ffda76ff', '#fed976ff', '#fed975ff', '#fed874ff', '#fed774ff', '#fed773ff', '#fed672ff', '#fed572ff', '#fed571ff', '#fed470ff', '#fed470ff', '#fed36fff', '#fed26eff', '#fed26eff', '#fed16dff', '#fed06cff', '#fed06cff', '#fecf6bff', '#fecf6aff', '#fece6aff', '#fecd69ff', '#fecd68ff', '#fecc68ff', '#fecb67ff', '#fecb66ff', '#feca66ff', '#feca65ff', '#fec964ff', '#fec864ff', '#fec863ff', '#fec762ff', '#fec662ff', '#fec661ff', '#fec560ff', '#fec45fff', '#fec45fff', '#fec35eff', '#fec35dff', '#fec25dff', '#fec15cff', '#fec15bff', '#fec05bff', '#febf5aff', '#febf59ff', '#febe59ff', '#febe58ff', '#febd57ff', '#febc57ff', '#febc56ff', '#febb55ff', '#feba55ff', '#feba54ff', '#feb953ff', '#feb953ff', '#feb852ff', '#feb751ff', '#feb751ff', '#feb650ff', '#feb54fff', '#feb54fff', '#feb44eff', '#feb44dff', '#feb34dff', '#feb24cff', '#feb24cff', '#feb14bff', '#feb04bff', '#feb04bff', '#feaf4bff', '#feaf4aff', '#feae4aff', '#feae4aff', '#fead4aff', '#feac49ff', '#feac49ff', '#feab49ff', '#feab48ff', '#feaa48ff', '#fea948ff', '#fea948ff', '#fea847ff', '#fea847ff', '#fea747ff', '#fea647ff', '#fea646ff', '#fea546ff', '#fea546ff', '#fea446ff', '#fea345ff', '#fea345ff', '#fea245ff', '#fea245ff', '#fea144ff', '#fea044ff', '#fea044ff', '#fe9f44ff', '#fe9f43ff', '#fe9e43ff', '#fe9d43ff', '#fe9d43ff', '#fe9c42ff', '#fe9c42ff', '#fe9b42ff', '#fe9a42ff', '#fe9a41ff', '#fe9941ff', '#fe9941ff', '#fe9840ff', '#fe9740ff', '#fe9740ff', '#fe9640ff', '#fe963fff', '#fe953fff', '#fe943fff', '#fe943fff', '#fe933eff', '#fe933eff', '#fe923eff', '#fe923eff', '#fe913dff', '#fe903dff', '#fe903dff', '#fe8f3dff', '#fe8f3cff', '#fe8e3cff', '#fe8d3cff', '#fd8d3cff', '#fd8c3bff', '#fd8b3bff', '#fd8a3bff', '#fd883aff', '#fd873aff', '#fd863aff', '#fd853aff', '#fd8439ff', '#fd8339ff', '#fd8239ff', '#fd8138ff', '#fd8038ff', '#fd7f38ff', '#fd7e38ff', '#fd7d37ff', '#fd7c37ff', '#fd7b37ff', '#fd7a36ff', '#fd7936ff', '#fd7836ff', '#fd7736ff', '#fd7635ff', '#fd7535ff', '#fd7435ff', '#fd7334ff', '#fd7234ff', '#fd7134ff', '#fd7033ff', '#fd6f33ff', '#fd6e33ff', '#fd6d33ff', '#fd6c32ff', '#fd6b32ff', '#fd6a32ff', '#fd6931ff', '#fd6831ff', '#fd6731ff', '#fd6631ff', '#fd6530ff', '#fd6430ff', '#fd6330ff', '#fd622fff', '#fd612fff', '#fd602fff', '#fd5f2fff', '#fd5e2eff', '#fd5d2eff', '#fd5c2eff', '#fd5b2dff', '#fd5a2dff', '#fd592dff', '#fd582dff', '#fd572cff', '#fd562cff', '#fd552cff', '#fd542bff', '#fd532bff', '#fd522bff', '#fd512aff', '#fd502aff', '#fd4f2aff', '#fc4e2aff', '#fc4d29ff', '#fc4c29ff', '#fb4b29ff', '#fb4a29ff', '#fa4a29ff', '#fa4928ff', '#fa4828ff', '#f94728ff', '#f94628ff', '#f84527ff', '#f84427ff', '#f84427ff', '#f74327ff', '#f74226ff', '#f64126ff', '#f64026ff', '#f63f26ff', '#f53f26ff', '#f53e25ff', '#f43d25ff', '#f43c25ff', '#f43b25ff', '#f33a24ff', '#f33a24ff', '#f23924ff', '#f23824ff', '#f23724ff', '#f13623ff', '#f13523ff', '#f03523ff', '#f03423ff', '#f03322ff', '#ef3222ff', '#ef3122ff', '#ee3022ff', '#ee3022ff', '#ee2f21ff', '#ed2e21ff', '#ed2d21ff', '#ec2c21ff', '#ec2b20ff', '#ec2b20ff', '#eb2a20ff', '#eb2920ff', '#ea281fff', '#ea271fff', '#ea261fff', '#e9261fff', '#e9251fff', '#e8241eff', '#e8231eff', '#e8221eff', '#e7211eff', '#e7211dff', '#e6201dff', '#e61f1dff', '#e61e1dff', '#e51d1dff', '#e51c1cff', '#e41b1cff', '#e41b1cff', '#e31a1cff', '#e3191cff', '#e2191cff', '#e2181cff', '#e1181cff', '#e0181cff', '#e0171dff', '#df171dff', '#df161dff', '#de161dff', '#dd161dff', '#dd151dff', '#dc151eff', '#dc141eff', '#db141eff', '#da131eff', '#da131eff', '#d9131eff', '#d9121eff', '#d8121fff', '#d7111fff', '#d7111fff', '#d6111fff', '#d5101fff', '#d5101fff', '#d40f20ff', '#d40f20ff', '#d30e20ff', '#d20e20ff', '#d20e20ff', '#d10d20ff', '#d10d21ff', '#d00c21ff', '#cf0c21ff', '#cf0b21ff', '#ce0b21ff', '#ce0b21ff', '#cd0a22ff', '#cc0a22ff', '#cc0922ff', '#cb0922ff', '#ca0922ff', '#ca0822ff', '#c90822ff', '#c90723ff', '#c80723ff', '#c70623ff', '#c70623ff', '#c60623ff', '#c60523ff', '#c50524ff', '#c40424ff', '#c40424ff', '#c30424ff', '#c30324ff', '#c20324ff', '#c10225ff', '#c10225ff', '#c00125ff', '#bf0125ff', '#bf0125ff', '#be0025ff', '#be0026ff', '#bd0026ff', '#bc0026ff', '#bb0026ff', '#ba0026ff', '#b90026ff', '#b80026ff', '#b70026ff', '#b60026ff', '#b50026ff', '#b40026ff', '#b30026ff', '#b20026ff', '#b10026ff', '#b00026ff', '#af0026ff', '#ae0026ff', '#ad0026ff', '#ac0026ff', '#ab0026ff', '#aa0026ff', '#a90026ff', '#a80026ff', '#a70026ff', '#a60026ff', '#a50026ff', '#a40026ff', '#a30026ff', '#a20026ff', '#a10026ff', '#a00026ff', '#9f0026ff', '#9e0026ff', '#9d0026ff', '#9c0026ff', '#9b0026ff', '#9b0026ff', '#9a0026ff', '#990026ff', '#980026ff', '#970026ff', '#960026ff', '#950026ff', '#940026ff', '#930026ff', '#920026ff', '#910026ff', '#900026ff', '#8f0026ff', '#8e0026ff', '#8d0026ff', '#8c0026ff', '#8b0026ff', '#8a0026ff', '#890026ff', '#880026ff', '#870026ff', '#860026ff', '#850026ff', '#840026ff', '#830026ff', '#820026ff', '#810026ff', '#800026ff']);
+    
+
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.x = d3.scale.linear()
+              .domain([0.0, 0.07133466787262582])
+              .range([0, 450 - 50]);
+
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.legend = L.control({position: 'topright'});
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.legend.addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.xAxis = d3.svg.axis()
+        .scale(color_map_6d3d8e3689d47591b16dc90f20d6c1f5.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([0.0, 0.008916833484078228, 0.017833666968156456, 0.026750500452234684, 0.03566733393631291, 0.04458416742039114, 0.05350100090446937, 0.062417834388547595, 0.07133466787262582]);
+
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.g = color_map_6d3d8e3689d47591b16dc90f20d6c1f5.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.g.selectAll("rect")
+        .data(color_map_6d3d8e3689d47591b16dc90f20d6c1f5.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_6d3d8e3689d47591b16dc90f20d6c1f5.x(color_map_6d3d8e3689d47591b16dc90f20d6c1f5.color.domain()[i - 1]) : color_map_6d3d8e3689d47591b16dc90f20d6c1f5.x.range()[0],
+            x1: i < color_map_6d3d8e3689d47591b16dc90f20d6c1f5.color.domain().length ? color_map_6d3d8e3689d47591b16dc90f20d6c1f5.x(color_map_6d3d8e3689d47591b16dc90f20d6c1f5.color.domain()[i]) : color_map_6d3d8e3689d47591b16dc90f20d6c1f5.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_6d3d8e3689d47591b16dc90f20d6c1f5.g.call(color_map_6d3d8e3689d47591b16dc90f20d6c1f5.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("Share (weekday 12:00)");
+    
+            var circle_a594ee208bd845a677cbcd0b3113075f = L.circle(
+                [31.92708728, 131.4250734],
+                {"bubblingMouseEvents": true, "color": "#fec25dff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec25dff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_8b240bdc5099ce69f56c8ad6f030fdb4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2aa2cb513ae582532478f0c1d1023816 = $(`<div id="html_2aa2cb513ae582532478f0c1d1023816" style="width: 100.0%; height: 100.0%;">ＥＶＯ３７宮崎 Share: 2.32%</div>`)[0];
+                popup_8b240bdc5099ce69f56c8ad6f030fdb4.setContent(html_2aa2cb513ae582532478f0c1d1023816);
+            
+        
+
+        circle_a594ee208bd845a677cbcd0b3113075f.bindPopup(popup_8b240bdc5099ce69f56c8ad6f030fdb4)
+        ;
+
+        
+    
+    
+            var circle_dcbe86c70260a149c3f909c42095e01f = L.circle(
+                [31.88590008, 131.419566],
+                {"bubblingMouseEvents": true, "color": "#ffdb7aff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdb7aff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_04c48a0d7827cd6718e96ddbf0bcf49a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_520b47fb2aca60fb04cee0c60e9dfdc1 = $(`<div id="html_520b47fb2aca60fb04cee0c60e9dfdc1" style="width: 100.0%; height: 100.0%;">オーシャン Share: 1.71%</div>`)[0];
+                popup_04c48a0d7827cd6718e96ddbf0bcf49a.setContent(html_520b47fb2aca60fb04cee0c60e9dfdc1);
+            
+        
+
+        circle_dcbe86c70260a149c3f909c42095e01f.bindPopup(popup_04c48a0d7827cd6718e96ddbf0bcf49a)
+        ;
+
+        
+    
+    
+            var circle_8eee17dc4b4985e3619298d5f23e6b1e = L.circle(
+                [32.42614056, 131.6514968],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_aadb10750f6cd92b4a2de424bc4a60f0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0ee5fabda353c108706cc2f2dae5e7cf = $(`<div id="html_0ee5fabda353c108706cc2f2dae5e7cf" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９日向店 Share: 0.10%</div>`)[0];
+                popup_aadb10750f6cd92b4a2de424bc4a60f0.setContent(html_0ee5fabda353c108706cc2f2dae5e7cf);
+            
+        
+
+        circle_8eee17dc4b4985e3619298d5f23e6b1e.bindPopup(popup_aadb10750f6cd92b4a2de424bc4a60f0)
+        ;
+
+        
+    
+    
+            var circle_e093fbbf372c0d65f90b4fa5e7c9900b = L.circle(
+                [31.73524983, 131.0729215],
+                {"bubblingMouseEvents": true, "color": "#fffdc5ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc5ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_b4bc8e4fba2793d0a8f9f55bbff32084 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79cbe84dfd5b1d4e7436438ef62c3aeb = $(`<div id="html_79cbe84dfd5b1d4e7436438ef62c3aeb" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９都城駅前店 Share: 0.14%</div>`)[0];
+                popup_b4bc8e4fba2793d0a8f9f55bbff32084.setContent(html_79cbe84dfd5b1d4e7436438ef62c3aeb);
+            
+        
+
+        circle_e093fbbf372c0d65f90b4fa5e7c9900b.bindPopup(popup_b4bc8e4fba2793d0a8f9f55bbff32084)
+        ;
+
+        
+    
+    
+            var circle_172a47cef35d18c700e2f7058875ef52 = L.circle(
+                [31.75391079, 131.0840258],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_03a0b651c52d67d6080d757f3da1086b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1d687aca59d1bdf8f2b01e5cb6e45335 = $(`<div id="html_1d687aca59d1bdf8f2b01e5cb6e45335" style="width: 100.0%; height: 100.0%;">シルバーバック都城店 Share: 0.10%</div>`)[0];
+                popup_03a0b651c52d67d6080d757f3da1086b.setContent(html_1d687aca59d1bdf8f2b01e5cb6e45335);
+            
+        
+
+        circle_172a47cef35d18c700e2f7058875ef52.bindPopup(popup_03a0b651c52d67d6080d757f3da1086b)
+        ;
+
+        
+    
+    
+            var circle_9e5f8715d54470b68abcd7bcfda8f6eb = L.circle(
+                [31.96160157, 131.4389747],
+                {"bubblingMouseEvents": true, "color": "#fed26eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed26eff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_ee86df97b17097aa861f9af3ba5c5ce5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d742ee95eedc0223d56bc46bd8941578 = $(`<div id="html_d742ee95eedc0223d56bc46bd8941578" style="width: 100.0%; height: 100.0%;">ワンダーランド１１８８宮崎芳士店 Share: 1.95%</div>`)[0];
+                popup_ee86df97b17097aa861f9af3ba5c5ce5.setContent(html_d742ee95eedc0223d56bc46bd8941578);
+            
+        
+
+        circle_9e5f8715d54470b68abcd7bcfda8f6eb.bindPopup(popup_ee86df97b17097aa861f9af3ba5c5ce5)
+        ;
+
+        
+    
+    
+            var circle_953a074dc43bb1a890bf3123b715a488 = L.circle(
+                [31.91732052, 131.4457345],
+                {"bubblingMouseEvents": true, "color": "#feb751ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#feb751ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_82fcc52ccfcda18b609fffd933b8cfa3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ae61b08869e3090bfbf418cd066d4a74 = $(`<div id="html_ae61b08869e3090bfbf418cd066d4a74" style="width: 100.0%; height: 100.0%;">マルハン宮崎店 Share: 2.56%</div>`)[0];
+                popup_82fcc52ccfcda18b609fffd933b8cfa3.setContent(html_ae61b08869e3090bfbf418cd066d4a74);
+            
+        
+
+        circle_953a074dc43bb1a890bf3123b715a488.bindPopup(popup_82fcc52ccfcda18b609fffd933b8cfa3)
+        ;
+
+        
+    
+    
+            var circle_55a5e3af42cdc27535fa84d40dc7da3d = L.circle(
+                [31.96345341, 131.4422664],
+                {"bubblingMouseEvents": true, "color": "#fecb66ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fecb66ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_25ee475a80bcc7d288e63f4c0ab886a5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bcb19dcfe4692fe3b263d5e9373f9f94 = $(`<div id="html_bcb19dcfe4692fe3b263d5e9373f9f94" style="width: 100.0%; height: 100.0%;">モナコパレスゴールド Share: 2.12%</div>`)[0];
+                popup_25ee475a80bcc7d288e63f4c0ab886a5.setContent(html_bcb19dcfe4692fe3b263d5e9373f9f94);
+            
+        
+
+        circle_55a5e3af42cdc27535fa84d40dc7da3d.bindPopup(popup_25ee475a80bcc7d288e63f4c0ab886a5)
+        ;
+
+        
+    
+    
+            var circle_48aa04a816748bcb9a39628f1a02cc22 = L.circle(
+                [32.42681237, 131.6497353],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_0cfafb31b80d6ce64504176e70de6d5c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c0de4a36cfdb6bfca8de89761a82855d = $(`<div id="html_c0de4a36cfdb6bfca8de89761a82855d" style="width: 100.0%; height: 100.0%;">シルバーバック日向店 Share: 0.08%</div>`)[0];
+                popup_0cfafb31b80d6ce64504176e70de6d5c.setContent(html_c0de4a36cfdb6bfca8de89761a82855d);
+            
+        
+
+        circle_48aa04a816748bcb9a39628f1a02cc22.bindPopup(popup_0cfafb31b80d6ce64504176e70de6d5c)
+        ;
+
+        
+    
+    
+            var circle_648b714c776957d975d4d8eb50f868d7 = L.circle(
+                [31.7015871, 131.0433527],
+                {"bubblingMouseEvents": true, "color": "#fffec9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_0386af7c9e4c1f52f3c6a28581cd0137 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_183c673508a74556a9abdbdd5fa0ca4c = $(`<div id="html_183c673508a74556a9abdbdd5fa0ca4c" style="width: 100.0%; height: 100.0%;">ＡＳＴＹ都城店 Share: 0.06%</div>`)[0];
+                popup_0386af7c9e4c1f52f3c6a28581cd0137.setContent(html_183c673508a74556a9abdbdd5fa0ca4c);
+            
+        
+
+        circle_648b714c776957d975d4d8eb50f868d7.bindPopup(popup_0386af7c9e4c1f52f3c6a28581cd0137)
+        ;
+
+        
+    
+    
+            var circle_62bda79368e3b09b752e5612831de648 = L.circle(
+                [32.58518307, 131.6542333],
+                {"bubblingMouseEvents": true, "color": "#fffecaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffecaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_53de63f2c3f95a8736d9fb116fcacf73 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1538522e331ea54a04214ba36173810b = $(`<div id="html_1538522e331ea54a04214ba36173810b" style="width: 100.0%; height: 100.0%;">西の丸古川店 Share: 0.05%</div>`)[0];
+                popup_53de63f2c3f95a8736d9fb116fcacf73.setContent(html_1538522e331ea54a04214ba36173810b);
+            
+        
+
+        circle_62bda79368e3b09b752e5612831de648.bindPopup(popup_53de63f2c3f95a8736d9fb116fcacf73)
+        ;
+
+        
+    
+    
+            var circle_8b41f1cc5e944173ba44a03cf009e292 = L.circle(
+                [31.78719542, 131.0513337],
+                {"bubblingMouseEvents": true, "color": "#fffecaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffecaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_9b0970591268754598fdf954b7dec9cd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7d63ce57cdd7b9fabb9c77780121f624 = $(`<div id="html_7d63ce57cdd7b9fabb9c77780121f624" style="width: 100.0%; height: 100.0%;">パーラーオーシャン谷頭駅前店 Share: 0.05%</div>`)[0];
+                popup_9b0970591268754598fdf954b7dec9cd.setContent(html_7d63ce57cdd7b9fabb9c77780121f624);
+            
+        
+
+        circle_8b41f1cc5e944173ba44a03cf009e292.bindPopup(popup_9b0970591268754598fdf954b7dec9cd)
+        ;
+
+        
+    
+    
+            var circle_905e004f65971de1ff3781303cc8ec34 = L.circle(
+                [31.89780829, 131.4124023],
+                {"bubblingMouseEvents": true, "color": "#800026ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_b65a1855cb1783ed5a01bed392276d33 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0344fbd0506ff7b1fe8ee749c0414c2e = $(`<div id="html_0344fbd0506ff7b1fe8ee749c0414c2e" style="width: 100.0%; height: 100.0%;">マルハン南宮崎店 Share: 7.13%</div>`)[0];
+                popup_b65a1855cb1783ed5a01bed392276d33.setContent(html_0344fbd0506ff7b1fe8ee749c0414c2e);
+            
+        
+
+        circle_905e004f65971de1ff3781303cc8ec34.bindPopup(popup_b65a1855cb1783ed5a01bed392276d33)
+        ;
+
+        
+    
+    
+            var circle_5cfd673a1cadb794a5fb7a300962cc1f = L.circle(
+                [31.96160157, 131.4389747],
+                {"bubblingMouseEvents": true, "color": "#fed26eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed26eff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_cdc9e0ab7a5e90be37039d5bef75db4c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_38d3c3d2974924bcbd3962c1a06fd91b = $(`<div id="html_38d3c3d2974924bcbd3962c1a06fd91b" style="width: 100.0%; height: 100.0%;">ワンダーランド１１８８宮崎芳士店 Share: 1.95%</div>`)[0];
+                popup_cdc9e0ab7a5e90be37039d5bef75db4c.setContent(html_38d3c3d2974924bcbd3962c1a06fd91b);
+            
+        
+
+        circle_5cfd673a1cadb794a5fb7a300962cc1f.bindPopup(popup_cdc9e0ab7a5e90be37039d5bef75db4c)
+        ;
+
+        
+    
+    
+            var circle_ad4b0408a752ed4b8daeddb68182dbeb = L.circle(
+                [32.5728625, 131.6803067],
+                {"bubblingMouseEvents": true, "color": "#ffffcaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_0b4ef5638b44a729a54f267ddfc4bf23 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_69249fe556f300f3cf108b50711a9562 = $(`<div id="html_69249fe556f300f3cf108b50711a9562" style="width: 100.0%; height: 100.0%;">西の丸センター Share: 0.04%</div>`)[0];
+                popup_0b4ef5638b44a729a54f267ddfc4bf23.setContent(html_69249fe556f300f3cf108b50711a9562);
+            
+        
+
+        circle_ad4b0408a752ed4b8daeddb68182dbeb.bindPopup(popup_0b4ef5638b44a729a54f267ddfc4bf23)
+        ;
+
+        
+    
+    
+            var circle_3f5da26a166877392b5f2025cc8c2ddf = L.circle(
+                [31.59811799, 131.3864484],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_2737ec1add934f8a222aeff194edb783 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e7df43d42876890befd217611900eed8 = $(`<div id="html_e7df43d42876890befd217611900eed8" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１日南店 Share: 0.10%</div>`)[0];
+                popup_2737ec1add934f8a222aeff194edb783.setContent(html_e7df43d42876890befd217611900eed8);
+            
+        
+
+        circle_3f5da26a166877392b5f2025cc8c2ddf.bindPopup(popup_2737ec1add934f8a222aeff194edb783)
+        ;
+
+        
+    
+    
+            var circle_9805003f16f29ef4eefe182a287c7b7a = L.circle(
+                [32.10176648, 131.4017629],
+                {"bubblingMouseEvents": true, "color": "#fffcc4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffcc4ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_5d441b4dce44a2fbcb45c4b6f05eca86 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e88005ca5de5df90690b8266585974eb = $(`<div id="html_e88005ca5de5df90690b8266585974eb" style="width: 100.0%; height: 100.0%;">モナコパレス西都本店 Share: 0.17%</div>`)[0];
+                popup_5d441b4dce44a2fbcb45c4b6f05eca86.setContent(html_e88005ca5de5df90690b8266585974eb);
+            
+        
+
+        circle_9805003f16f29ef4eefe182a287c7b7a.bindPopup(popup_5d441b4dce44a2fbcb45c4b6f05eca86)
+        ;
+
+        
+    
+    
+            var circle_fc0e5b8acb502c27836b9e52c4fe6b85 = L.circle(
+                [32.56779825, 131.6828702],
+                {"bubblingMouseEvents": true, "color": "#fffec9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_24a8190e76e7e3d69c45db8d42f4799e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef3b5779631fa7eacfeae6d6bb09f685 = $(`<div id="html_ef3b5779631fa7eacfeae6d6bb09f685" style="width: 100.0%; height: 100.0%;">シリウス延岡店 Share: 0.07%</div>`)[0];
+                popup_24a8190e76e7e3d69c45db8d42f4799e.setContent(html_ef3b5779631fa7eacfeae6d6bb09f685);
+            
+        
+
+        circle_fc0e5b8acb502c27836b9e52c4fe6b85.bindPopup(popup_24a8190e76e7e3d69c45db8d42f4799e)
+        ;
+
+        
+    
+    
+            var circle_ed3ce93d416e9b23c1461be1cc971791 = L.circle(
+                [31.92106195, 131.3979654],
+                {"bubblingMouseEvents": true, "color": "#fe9840ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9840ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_12fed10fbd66beacfa18be4d1a094ed6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_916bccb9dd4233bd7f24bf5e1d1a4323 = $(`<div id="html_916bccb9dd4233bd7f24bf5e1d1a4323" style="width: 100.0%; height: 100.0%;">モナコパレス大橋店 Share: 3.31%</div>`)[0];
+                popup_12fed10fbd66beacfa18be4d1a094ed6.setContent(html_916bccb9dd4233bd7f24bf5e1d1a4323);
+            
+        
+
+        circle_ed3ce93d416e9b23c1461be1cc971791.bindPopup(popup_12fed10fbd66beacfa18be4d1a094ed6)
+        ;
+
+        
+    
+    
+            var circle_195561d184fee521b6afe6a99a34050b = L.circle(
+                [31.90091668, 131.4182527],
+                {"bubblingMouseEvents": true, "color": "#fd6e33ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fd6e33ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_16bc8a1bc2e599ed90266601c5ad060a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_707a3abff917ab54f8b22ef6e02b9a77 = $(`<div id="html_707a3abff917ab54f8b22ef6e02b9a77" style="width: 100.0%; height: 100.0%;">サンダイスケ中村店 Share: 4.00%</div>`)[0];
+                popup_16bc8a1bc2e599ed90266601c5ad060a.setContent(html_707a3abff917ab54f8b22ef6e02b9a77);
+            
+        
+
+        circle_195561d184fee521b6afe6a99a34050b.bindPopup(popup_16bc8a1bc2e599ed90266601c5ad060a)
+        ;
+
+        
+    
+    
+            var circle_6f9a39dee31bc2b33214838b7dd60d53 = L.circle(
+                [32.54701305, 131.6768808],
+                {"bubblingMouseEvents": true, "color": "#ffffcaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_1d1fc35687a675c5200758215a270453 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_05d9cbaac9a934d6ebbb3c15228b021c = $(`<div id="html_05d9cbaac9a934d6ebbb3c15228b021c" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１南延岡店 Share: 0.05%</div>`)[0];
+                popup_1d1fc35687a675c5200758215a270453.setContent(html_05d9cbaac9a934d6ebbb3c15228b021c);
+            
+        
+
+        circle_6f9a39dee31bc2b33214838b7dd60d53.bindPopup(popup_1d1fc35687a675c5200758215a270453)
+        ;
+
+        
+    
+    
+            var circle_1c8edb071d8acb8a4de0bc65c989da07 = L.circle(
+                [31.89457036, 131.4183746],
+                {"bubblingMouseEvents": true, "color": "#c80723ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c80723ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_8f3725d2c906654d883bfeebd76f2aec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_705bf14930d42d25cc5d320e984f3097 = $(`<div id="html_705bf14930d42d25cc5d320e984f3097" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９大淀店 Share: 5.99%</div>`)[0];
+                popup_8f3725d2c906654d883bfeebd76f2aec.setContent(html_705bf14930d42d25cc5d320e984f3097);
+            
+        
+
+        circle_1c8edb071d8acb8a4de0bc65c989da07.bindPopup(popup_8f3725d2c906654d883bfeebd76f2aec)
+        ;
+
+        
+    
+    
+            var circle_c7833dcac3c1761a005f7d0881d016c9 = L.circle(
+                [31.61347813, 131.3786389],
+                {"bubblingMouseEvents": true, "color": "#fffec9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_e675e8af80cae726f7c59b2862d988d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_193131a533497cc48e2ba5452f835b22 = $(`<div id="html_193131a533497cc48e2ba5452f835b22" style="width: 100.0%; height: 100.0%;">ワシントン日南店 Share: 0.07%</div>`)[0];
+                popup_e675e8af80cae726f7c59b2862d988d3.setContent(html_193131a533497cc48e2ba5452f835b22);
+            
+        
+
+        circle_c7833dcac3c1761a005f7d0881d016c9.bindPopup(popup_e675e8af80cae726f7c59b2862d988d3)
+        ;
+
+        
+    
+    
+            var circle_c365739501dd7de4b0c192643999efc6 = L.circle(
+                [31.45506535, 131.2129005],
+                {"bubblingMouseEvents": true, "color": "#fffecaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffecaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_2b14baaccc9790e807546634b862dc27 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9829485e5846b2ce03f5eb53795f8013 = $(`<div id="html_9829485e5846b2ce03f5eb53795f8013" style="width: 100.0%; height: 100.0%;">ＢＥＡＭ　ＫＵＳＨＩＭＡ Share: 0.05%</div>`)[0];
+                popup_2b14baaccc9790e807546634b862dc27.setContent(html_9829485e5846b2ce03f5eb53795f8013);
+            
+        
+
+        circle_c365739501dd7de4b0c192643999efc6.bindPopup(popup_2b14baaccc9790e807546634b862dc27)
+        ;
+
+        
+    
+    
+            var circle_e96452651658e79d997d58834080dfa6 = L.circle(
+                [31.89457036, 131.4183746],
+                {"bubblingMouseEvents": true, "color": "#c80723ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c80723ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_d7da4e93033032ff3a15a1507815f96d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4985b07ac1905e37fbe367c7ebfb07f6 = $(`<div id="html_4985b07ac1905e37fbe367c7ebfb07f6" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９大淀店 Share: 5.99%</div>`)[0];
+                popup_d7da4e93033032ff3a15a1507815f96d.setContent(html_4985b07ac1905e37fbe367c7ebfb07f6);
+            
+        
+
+        circle_e96452651658e79d997d58834080dfa6.bindPopup(popup_d7da4e93033032ff3a15a1507815f96d)
+        ;
+
+        
+    
+    
+            var circle_ace3fa737913f8fb3a8a27f9ac50e3d4 = L.circle(
+                [32.11434914, 131.416477],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_ed09bc6efde7652dbf23feb51bb723e1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c2783c4eff7cba646c44fd5ffd378d77 = $(`<div id="html_c2783c4eff7cba646c44fd5ffd378d77" style="width: 100.0%; height: 100.0%;">ワシントン西都店 Share: 0.08%</div>`)[0];
+                popup_ed09bc6efde7652dbf23feb51bb723e1.setContent(html_c2783c4eff7cba646c44fd5ffd378d77);
+            
+        
+
+        circle_ace3fa737913f8fb3a8a27f9ac50e3d4.bindPopup(popup_ed09bc6efde7652dbf23feb51bb723e1)
+        ;
+
+        
+    
+    
+            var circle_5aed52c0527c33ac8202cf3f45528517 = L.circle(
+                [31.89780829, 131.4124023],
+                {"bubblingMouseEvents": true, "color": "#800026ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800026ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_598ce48015790e2d658f1555dc125b9c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6b4c5c7789f11d948d1bb037d1392e44 = $(`<div id="html_6b4c5c7789f11d948d1bb037d1392e44" style="width: 100.0%; height: 100.0%;">マルハン南宮崎店 Share: 7.13%</div>`)[0];
+                popup_598ce48015790e2d658f1555dc125b9c.setContent(html_6b4c5c7789f11d948d1bb037d1392e44);
+            
+        
+
+        circle_5aed52c0527c33ac8202cf3f45528517.bindPopup(popup_598ce48015790e2d658f1555dc125b9c)
+        ;
+
+        
+    
+    
+            var circle_5001f5bdfc765afb65f5ee8df6288d14 = L.circle(
+                [31.9173525, 131.4305987],
+                {"bubblingMouseEvents": true, "color": "#e9261fff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e9261fff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_8ef0476a69a7f74c7f07d1f5908f48cf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9f2bf38d7d4aa06e54b50f44241beab6 = $(`<div id="html_9f2bf38d7d4aa06e54b50f44241beab6" style="width: 100.0%; height: 100.0%;">モナコパレス１０００宮崎駅前店 Share: 5.14%</div>`)[0];
+                popup_8ef0476a69a7f74c7f07d1f5908f48cf.setContent(html_9f2bf38d7d4aa06e54b50f44241beab6);
+            
+        
+
+        circle_5001f5bdfc765afb65f5ee8df6288d14.bindPopup(popup_8ef0476a69a7f74c7f07d1f5908f48cf)
+        ;
+
+        
+    
+    
+            var circle_2da5ab11a81169d5a1f6af1313df2892 = L.circle(
+                [32.56407844, 131.6788778],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_98d887183bd7a2ce4b4c0ed5421e3ee8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9cbd96b0c07902036b71fa6a46b17aa4 = $(`<div id="html_9cbd96b0c07902036b71fa6a46b17aa4" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９延岡店 Share: 0.09%</div>`)[0];
+                popup_98d887183bd7a2ce4b4c0ed5421e3ee8.setContent(html_9cbd96b0c07902036b71fa6a46b17aa4);
+            
+        
+
+        circle_2da5ab11a81169d5a1f6af1313df2892.bindPopup(popup_98d887183bd7a2ce4b4c0ed5421e3ee8)
+        ;
+
+        
+    
+    
+            var circle_5e52f99d0bd256ab783b9720ac694611 = L.circle(
+                [32.44611276, 131.6386734],
+                {"bubblingMouseEvents": true, "color": "#ffffcaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_80793abdaa2ba23d77c3523dc78ce299 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b401dafefc57eca35077785f1840f2e6 = $(`<div id="html_b401dafefc57eca35077785f1840f2e6" style="width: 100.0%; height: 100.0%;">ダイナム日向店 Share: 0.05%</div>`)[0];
+                popup_80793abdaa2ba23d77c3523dc78ce299.setContent(html_b401dafefc57eca35077785f1840f2e6);
+            
+        
+
+        circle_5e52f99d0bd256ab783b9720ac694611.bindPopup(popup_80793abdaa2ba23d77c3523dc78ce299)
+        ;
+
+        
+    
+    
+            var circle_5edfbc80d97bb4746031ac84fac210ee = L.circle(
+                [31.86223093, 131.3858565],
+                {"bubblingMouseEvents": true, "color": "#fff1a9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff1a9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_4464c54dfbb12cbd616044c3c56adc6d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a17f42cf8c12ddbac78d35e28354a383 = $(`<div id="html_a17f42cf8c12ddbac78d35e28354a383" style="width: 100.0%; height: 100.0%;">モナコパレス清武店 Share: 0.71%</div>`)[0];
+                popup_4464c54dfbb12cbd616044c3c56adc6d.setContent(html_a17f42cf8c12ddbac78d35e28354a383);
+            
+        
+
+        circle_5edfbc80d97bb4746031ac84fac210ee.bindPopup(popup_4464c54dfbb12cbd616044c3c56adc6d)
+        ;
+
+        
+    
+    
+            var circle_fa919b3d47cdb88c9a5e4651ed9dcef2 = L.circle(
+                [31.71754712, 131.0764085],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_af087c4f6a5f39be0a269918cbe09313 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a1d0eb690a02ec176c2609a210ece1d = $(`<div id="html_8a1d0eb690a02ec176c2609a210ece1d" style="width: 100.0%; height: 100.0%;">がちゃぽん都城店 Share: 0.10%</div>`)[0];
+                popup_af087c4f6a5f39be0a269918cbe09313.setContent(html_8a1d0eb690a02ec176c2609a210ece1d);
+            
+        
+
+        circle_fa919b3d47cdb88c9a5e4651ed9dcef2.bindPopup(popup_af087c4f6a5f39be0a269918cbe09313)
+        ;
+
+        
+    
+    
+            var circle_132cc1382e46d485fb4f631f4a368a22 = L.circle(
+                [31.73841626, 131.0895403],
+                {"bubblingMouseEvents": true, "color": "#fffdc6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_756fc0e30a80872b161b06d6107c6fdd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7f19cb64f53c0355b0882063eceb489e = $(`<div id="html_7f19cb64f53c0355b0882063eceb489e" style="width: 100.0%; height: 100.0%;">ＢＩＧＯＰＵＳ１５都城店 Share: 0.14%</div>`)[0];
+                popup_756fc0e30a80872b161b06d6107c6fdd.setContent(html_7f19cb64f53c0355b0882063eceb489e);
+            
+        
+
+        circle_132cc1382e46d485fb4f631f4a368a22.bindPopup(popup_756fc0e30a80872b161b06d6107c6fdd)
+        ;
+
+        
+    
+    
+            var circle_770859bbdc2e6692639bc0f58c98dc3a = L.circle(
+                [31.91264082, 131.4535983],
+                {"bubblingMouseEvents": true, "color": "#fed975ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed975ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_e37df887e31aabfa1012980fe2eb4229 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_03961e724752842c5bbe9955e05c7496 = $(`<div id="html_03961e724752842c5bbe9955e05c7496" style="width: 100.0%; height: 100.0%;">シルバーバック宮崎みなと店 Share: 1.80%</div>`)[0];
+                popup_e37df887e31aabfa1012980fe2eb4229.setContent(html_03961e724752842c5bbe9955e05c7496);
+            
+        
+
+        circle_770859bbdc2e6692639bc0f58c98dc3a.bindPopup(popup_e37df887e31aabfa1012980fe2eb4229)
+        ;
+
+        
+    
+    
+            var circle_91ae466b158815add10978029cdaac40 = L.circle(
+                [31.98485838, 131.0022607],
+                {"bubblingMouseEvents": true, "color": "#fffecaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffecaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_04f583247ce989975611137309984b96 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_40716176ae8efdeee45c00adcf2d4794 = $(`<div id="html_40716176ae8efdeee45c00adcf2d4794" style="width: 100.0%; height: 100.0%;">ダイナム小林店 Share: 0.06%</div>`)[0];
+                popup_04f583247ce989975611137309984b96.setContent(html_40716176ae8efdeee45c00adcf2d4794);
+            
+        
+
+        circle_91ae466b158815add10978029cdaac40.bindPopup(popup_04f583247ce989975611137309984b96)
+        ;
+
+        
+    
+    
+            var circle_53df30372c35a357f09e7133a61189f7 = L.circle(
+                [31.86834334, 131.4357533],
+                {"bubblingMouseEvents": true, "color": "#fff8baff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff8baff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_5517dab0bfaf07a5db52065d9720ec90 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c0afcf6989314b3e582caae2d335affa = $(`<div id="html_c0afcf6989314b3e582caae2d335affa" style="width: 100.0%; height: 100.0%;">ランドマークスロット館 Share: 0.36%</div>`)[0];
+                popup_5517dab0bfaf07a5db52065d9720ec90.setContent(html_c0afcf6989314b3e582caae2d335affa);
+            
+        
+
+        circle_53df30372c35a357f09e7133a61189f7.bindPopup(popup_5517dab0bfaf07a5db52065d9720ec90)
+        ;
+
+        
+    
+    
+            var circle_31a8827a7abb12773dc35b0e19a543ab = L.circle(
+                [32.59413796, 131.677453],
+                {"bubblingMouseEvents": true, "color": "#ffffcaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_575740270c1be1485ce903f2a1c6fe99 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3e49d21e62c8d0d2bb5cce66b1021f33 = $(`<div id="html_3e49d21e62c8d0d2bb5cce66b1021f33" style="width: 100.0%; height: 100.0%;">ダイナム宮崎延岡店 Share: 0.05%</div>`)[0];
+                popup_575740270c1be1485ce903f2a1c6fe99.setContent(html_3e49d21e62c8d0d2bb5cce66b1021f33);
+            
+        
+
+        circle_31a8827a7abb12773dc35b0e19a543ab.bindPopup(popup_575740270c1be1485ce903f2a1c6fe99)
+        ;
+
+        
+    
+    
+            var circle_25c8da0db7a6e577f5e5e4b195a7575d = L.circle(
+                [31.59661763, 131.3887505],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_85656b6fdb1ce6b80c52496582f39f4d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3bf66a5bc36cca99875db405c70c5459 = $(`<div id="html_3bf66a5bc36cca99875db405c70c5459" style="width: 100.0%; height: 100.0%;">ＭＧＭ日南店 Share: 0.09%</div>`)[0];
+                popup_85656b6fdb1ce6b80c52496582f39f4d.setContent(html_3bf66a5bc36cca99875db405c70c5459);
+            
+        
+
+        circle_25c8da0db7a6e577f5e5e4b195a7575d.bindPopup(popup_85656b6fdb1ce6b80c52496582f39f4d)
+        ;
+
+        
+    
+    
+            var circle_18d71c7403f7c75f284052b6df292626 = L.circle(
+                [32.12485466, 131.5156399],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_afbc1c912697a50c3206149af3f49bdc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5bbb759fffe01bc7f239343e5f8a6583 = $(`<div id="html_5bbb759fffe01bc7f239343e5f8a6583" style="width: 100.0%; height: 100.0%;">Ｔ−ＭＡＸ高鍋店 Share: 0.11%</div>`)[0];
+                popup_afbc1c912697a50c3206149af3f49bdc.setContent(html_5bbb759fffe01bc7f239343e5f8a6583);
+            
+        
+
+        circle_18d71c7403f7c75f284052b6df292626.bindPopup(popup_afbc1c912697a50c3206149af3f49bdc)
+        ;
+
+        
+    
+    
+            var circle_2443b7f51be45438cb501ff3a2b12777 = L.circle(
+                [31.75889141, 131.0860824],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_a7e4264e51bdb989c0f7f34b1ddcd170 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fff7a3ef2805dc0cfddcc22d0738c04a = $(`<div id="html_fff7a3ef2805dc0cfddcc22d0738c04a" style="width: 100.0%; height: 100.0%;">シリウス９６都城店 Share: 0.08%</div>`)[0];
+                popup_a7e4264e51bdb989c0f7f34b1ddcd170.setContent(html_fff7a3ef2805dc0cfddcc22d0738c04a);
+            
+        
+
+        circle_2443b7f51be45438cb501ff3a2b12777.bindPopup(popup_a7e4264e51bdb989c0f7f34b1ddcd170)
+        ;
+
+        
+    
+    
+            var circle_7402e3eb84d41ef2e37962dac37dd3e0 = L.circle(
+                [31.95548069, 131.4346932],
+                {"bubblingMouseEvents": true, "color": "#ffeda0ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffeda0ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_1ca830e193de3c93eac943ea42479dda = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b6fd717ee80f723f5b4454da6a49d68d = $(`<div id="html_b6fd717ee80f723f5b4454da6a49d68d" style="width: 100.0%; height: 100.0%;">ダイナム花ケ島店 Share: 0.90%</div>`)[0];
+                popup_1ca830e193de3c93eac943ea42479dda.setContent(html_b6fd717ee80f723f5b4454da6a49d68d);
+            
+        
+
+        circle_7402e3eb84d41ef2e37962dac37dd3e0.bindPopup(popup_1ca830e193de3c93eac943ea42479dda)
+        ;
+
+        
+    
+    
+            var circle_5298c337b91a89c6513b74e10d5481ff = L.circle(
+                [31.92106195, 131.3979654],
+                {"bubblingMouseEvents": true, "color": "#fe9840ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fe9840ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_85e919f4debfd164cc228fa957ba511b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_11d0dcd127813b86bb74e0337a4a97cb = $(`<div id="html_11d0dcd127813b86bb74e0337a4a97cb" style="width: 100.0%; height: 100.0%;">モナコパレス大橋店 Share: 3.31%</div>`)[0];
+                popup_85e919f4debfd164cc228fa957ba511b.setContent(html_11d0dcd127813b86bb74e0337a4a97cb);
+            
+        
+
+        circle_5298c337b91a89c6513b74e10d5481ff.bindPopup(popup_85e919f4debfd164cc228fa957ba511b)
+        ;
+
+        
+    
+    
+            var circle_ce47763515578c69e1781886253563d9 = L.circle(
+                [31.75209388, 131.1026019],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_6f95eb193cdb651829aeeb8438e55dd6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a96d31152e0d378b4e233256e83b8ab3 = $(`<div id="html_a96d31152e0d378b4e233256e83b8ab3" style="width: 100.0%; height: 100.0%;">モナコパレス都城店 Share: 0.12%</div>`)[0];
+                popup_6f95eb193cdb651829aeeb8438e55dd6.setContent(html_a96d31152e0d378b4e233256e83b8ab3);
+            
+        
+
+        circle_ce47763515578c69e1781886253563d9.bindPopup(popup_6f95eb193cdb651829aeeb8438e55dd6)
+        ;
+
+        
+    
+    
+            var circle_8aaa99661c94e0d19a7c899db7474cbb = L.circle(
+                [32.11541242, 131.3831149],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_a405262f201e0205a24b12d90fa108dc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ac0f5934f844bb347ff167dafdfd0d3c = $(`<div id="html_ac0f5934f844bb347ff167dafdfd0d3c" style="width: 100.0%; height: 100.0%;">ダイナム西都店 Share: 0.11%</div>`)[0];
+                popup_a405262f201e0205a24b12d90fa108dc.setContent(html_ac0f5934f844bb347ff167dafdfd0d3c);
+            
+        
+
+        circle_8aaa99661c94e0d19a7c899db7474cbb.bindPopup(popup_a405262f201e0205a24b12d90fa108dc)
+        ;
+
+        
+    
+    
+            var circle_6fefb0f94152581094c6aa2495a24db1 = L.circle(
+                [31.93341959, 131.3884139],
+                {"bubblingMouseEvents": true, "color": "#ffdc7cff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffdc7cff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_21c4f7428fa5628356aec32968077d4e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0d61c14c6205f712899f17d4bcdfa50b = $(`<div id="html_0d61c14c6205f712899f17d4bcdfa50b" style="width: 100.0%; height: 100.0%;">オーパス小松台店 Share: 1.65%</div>`)[0];
+                popup_21c4f7428fa5628356aec32968077d4e.setContent(html_0d61c14c6205f712899f17d4bcdfa50b);
+            
+        
+
+        circle_6fefb0f94152581094c6aa2495a24db1.bindPopup(popup_21c4f7428fa5628356aec32968077d4e)
+        ;
+
+        
+    
+    
+            var circle_7df925a0ff9dec435945ef4d849e1c36 = L.circle(
+                [31.72936179, 131.1018901],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_9da6f99f027f5fa2fe8f586ccdca6f0a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_76272ff4bc34d8232c5818a1de0bfdef = $(`<div id="html_76272ff4bc34d8232c5818a1de0bfdef" style="width: 100.0%; height: 100.0%;">オーパス三股店 Share: 0.11%</div>`)[0];
+                popup_9da6f99f027f5fa2fe8f586ccdca6f0a.setContent(html_76272ff4bc34d8232c5818a1de0bfdef);
+            
+        
+
+        circle_7df925a0ff9dec435945ef4d849e1c36.bindPopup(popup_9da6f99f027f5fa2fe8f586ccdca6f0a)
+        ;
+
+        
+    
+    
+            var circle_9d0c4cddbe4a1994528031cbc5123d31 = L.circle(
+                [31.59811799, 131.3864484],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_882c26dc6956abe7e6dc7803500050d5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bb6228d2574d3edf6203604ef8526bf8 = $(`<div id="html_bb6228d2574d3edf6203604ef8526bf8" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１日南店 Share: 0.10%</div>`)[0];
+                popup_882c26dc6956abe7e6dc7803500050d5.setContent(html_bb6228d2574d3edf6203604ef8526bf8);
+            
+        
+
+        circle_9d0c4cddbe4a1994528031cbc5123d31.bindPopup(popup_882c26dc6956abe7e6dc7803500050d5)
+        ;
+
+        
+    
+    
+            var circle_4687663edb75cf9082bb3523efbce932 = L.circle(
+                [31.75477849, 131.084156],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_e3e48b7749d4bf30ba27a52057bc0050 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5078af05d7a903ec934f9cd20fbe726b = $(`<div id="html_5078af05d7a903ec934f9cd20fbe726b" style="width: 100.0%; height: 100.0%;">マルハン都城店 Share: 0.10%</div>`)[0];
+                popup_e3e48b7749d4bf30ba27a52057bc0050.setContent(html_5078af05d7a903ec934f9cd20fbe726b);
+            
+        
+
+        circle_4687663edb75cf9082bb3523efbce932.bindPopup(popup_e3e48b7749d4bf30ba27a52057bc0050)
+        ;
+
+        
+    
+    
+            var circle_3e0eb4b57fc82c2c7d22413c0a28422a = L.circle(
+                [31.70578625, 131.0592102],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_b18e82a34f35e1d6f709b87041ee9b50 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_39541dc6460c41a8d5890a5e93d0b3ef = $(`<div id="html_39541dc6460c41a8d5890a5e93d0b3ef" style="width: 100.0%; height: 100.0%;">マルハン都城南店 Share: 0.10%</div>`)[0];
+                popup_b18e82a34f35e1d6f709b87041ee9b50.setContent(html_39541dc6460c41a8d5890a5e93d0b3ef);
+            
+        
+
+        circle_3e0eb4b57fc82c2c7d22413c0a28422a.bindPopup(popup_b18e82a34f35e1d6f709b87041ee9b50)
+        ;
+
+        
+    
+    
+            var circle_fed5ef4a6fc1c927768f5b073264792d = L.circle(
+                [31.73841626, 131.0895403],
+                {"bubblingMouseEvents": true, "color": "#fffdc6ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc6ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_73cba1e364d11a4e6d56250ad69b1aa8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_11f9397078c0390b737933fa120cbef1 = $(`<div id="html_11f9397078c0390b737933fa120cbef1" style="width: 100.0%; height: 100.0%;">ＢＩＧＯＰＵＳ１５都城店 Share: 0.14%</div>`)[0];
+                popup_73cba1e364d11a4e6d56250ad69b1aa8.setContent(html_11f9397078c0390b737933fa120cbef1);
+            
+        
+
+        circle_fed5ef4a6fc1c927768f5b073264792d.bindPopup(popup_73cba1e364d11a4e6d56250ad69b1aa8)
+        ;
+
+        
+    
+    
+            var circle_df9fbc6835832f54c26d55b69ee13e3c = L.circle(
+                [31.84245567, 131.3415927],
+                {"bubblingMouseEvents": true, "color": "#fffabfff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffabfff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_d1fabb2da69de37ee6844c10fc98f069 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_202f806641104899db01dfe48e47c232 = $(`<div id="html_202f806641104899db01dfe48e47c232" style="width: 100.0%; height: 100.0%;">シリウス清武店 Share: 0.27%</div>`)[0];
+                popup_d1fabb2da69de37ee6844c10fc98f069.setContent(html_202f806641104899db01dfe48e47c232);
+            
+        
+
+        circle_df9fbc6835832f54c26d55b69ee13e3c.bindPopup(popup_d1fabb2da69de37ee6844c10fc98f069)
+        ;
+
+        
+    
+    
+            var circle_3388890183ee784bb25c3bfbae5fb795 = L.circle(
+                [31.92708728, 131.4250734],
+                {"bubblingMouseEvents": true, "color": "#fec25dff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fec25dff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_3510fd5fac70963dced90d20cb1e8d08 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8d4603beba5cdc677de32cf2f9f51244 = $(`<div id="html_8d4603beba5cdc677de32cf2f9f51244" style="width: 100.0%; height: 100.0%;">ＥＶＯ３７宮崎 Share: 2.32%</div>`)[0];
+                popup_3510fd5fac70963dced90d20cb1e8d08.setContent(html_8d4603beba5cdc677de32cf2f9f51244);
+            
+        
+
+        circle_3388890183ee784bb25c3bfbae5fb795.bindPopup(popup_3510fd5fac70963dced90d20cb1e8d08)
+        ;
+
+        
+    
+    
+            var circle_8f49e0e5b3cc31678701087feba2440d = L.circle(
+                [32.15432218, 131.529261],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_721e5c39505cd6cbe67d1031922c6afe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ecbbb70b9d8ba21cebca661852247820 = $(`<div id="html_ecbbb70b9d8ba21cebca661852247820" style="width: 100.0%; height: 100.0%;">ダイナム高鍋店 Share: 0.09%</div>`)[0];
+                popup_721e5c39505cd6cbe67d1031922c6afe.setContent(html_ecbbb70b9d8ba21cebca661852247820);
+            
+        
+
+        circle_8f49e0e5b3cc31678701087feba2440d.bindPopup(popup_721e5c39505cd6cbe67d1031922c6afe)
+        ;
+
+        
+    
+    
+            var circle_742c04808576f4065701fbaf8813edf9 = L.circle(
+                [32.42696027, 131.6523664],
+                {"bubblingMouseEvents": true, "color": "#fffec9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_b25dc8dccee604ade02b178825e10eb2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5c009d9a41a43a71d3fba53ac0f446e4 = $(`<div id="html_5c009d9a41a43a71d3fba53ac0f446e4" style="width: 100.0%; height: 100.0%;">まるみつ日向店 Share: 0.08%</div>`)[0];
+                popup_b25dc8dccee604ade02b178825e10eb2.setContent(html_5c009d9a41a43a71d3fba53ac0f446e4);
+            
+        
+
+        circle_742c04808576f4065701fbaf8813edf9.bindPopup(popup_b25dc8dccee604ade02b178825e10eb2)
+        ;
+
+        
+    
+    
+            var circle_9db77a163441cee7e16837711c27e61b = L.circle(
+                [32.56407844, 131.6788778],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_0abb1d876384fa0235f7be03da68c93d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4025454daa4d8bec54ab9bf729ba4ca7 = $(`<div id="html_4025454daa4d8bec54ab9bf729ba4ca7" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９延岡店 Share: 0.09%</div>`)[0];
+                popup_0abb1d876384fa0235f7be03da68c93d.setContent(html_4025454daa4d8bec54ab9bf729ba4ca7);
+            
+        
+
+        circle_9db77a163441cee7e16837711c27e61b.bindPopup(popup_0abb1d876384fa0235f7be03da68c93d)
+        ;
+
+        
+    
+    
+            var circle_9ded0d62d2569cf88b3b59e0a2277320 = L.circle(
+                [32.42614056, 131.6514968],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_f8843d6dba38ff0d3553b9102cb0caff = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_999c0dde005640f3abeefcbbb4301b95 = $(`<div id="html_999c0dde005640f3abeefcbbb4301b95" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９日向店 Share: 0.10%</div>`)[0];
+                popup_f8843d6dba38ff0d3553b9102cb0caff.setContent(html_999c0dde005640f3abeefcbbb4301b95);
+            
+        
+
+        circle_9ded0d62d2569cf88b3b59e0a2277320.bindPopup(popup_f8843d6dba38ff0d3553b9102cb0caff)
+        ;
+
+        
+    
+    
+            var circle_e0ba4954e2ae8b1166ccb0437a21fe3f = L.circle(
+                [31.73524983, 131.0729215],
+                {"bubblingMouseEvents": true, "color": "#fffdc5ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc5ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_faba1eb2c076c4835be10dcfc85f7cf1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9422351e26e3e3f679f9091c25b2577a = $(`<div id="html_9422351e26e3e3f679f9091c25b2577a" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９都城駅前店 Share: 0.14%</div>`)[0];
+                popup_faba1eb2c076c4835be10dcfc85f7cf1.setContent(html_9422351e26e3e3f679f9091c25b2577a);
+            
+        
+
+        circle_e0ba4954e2ae8b1166ccb0437a21fe3f.bindPopup(popup_faba1eb2c076c4835be10dcfc85f7cf1)
+        ;
+
+        
+    
+    
+            var circle_711a0d99945e7e7c6d13a11fdd0fb6b1 = L.circle(
+                [32.00214773, 131.4687399],
+                {"bubblingMouseEvents": true, "color": "#fff6b5ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b5ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_e158603a9f7652e762fa01e7e313a685 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5e1f1ac09bd59e417295596b7576076e = $(`<div id="html_5e1f1ac09bd59e417295596b7576076e" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１佐土原店 Share: 0.46%</div>`)[0];
+                popup_e158603a9f7652e762fa01e7e313a685.setContent(html_5e1f1ac09bd59e417295596b7576076e);
+            
+        
+
+        circle_711a0d99945e7e7c6d13a11fdd0fb6b1.bindPopup(popup_e158603a9f7652e762fa01e7e313a685)
+        ;
+
+        
+    
+    
+            var circle_d113896ffb1ce5b5950b1c7d2b88a453 = L.circle(
+                [32.56407844, 131.6788778],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_0cf65c252750d7103cbd07a614244542 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cdae86a8fe40a4112371e2d1b5dfd1e4 = $(`<div id="html_cdae86a8fe40a4112371e2d1b5dfd1e4" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９延岡店 Share: 0.09%</div>`)[0];
+                popup_0cf65c252750d7103cbd07a614244542.setContent(html_cdae86a8fe40a4112371e2d1b5dfd1e4);
+            
+        
+
+        circle_d113896ffb1ce5b5950b1c7d2b88a453.bindPopup(popup_0cf65c252750d7103cbd07a614244542)
+        ;
+
+        
+    
+    
+            var circle_1f80f3431549fe5d4bb56e6df1e7fb7a = L.circle(
+                [31.59803583, 131.3868147],
+                {"bubblingMouseEvents": true, "color": "#fffec9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_49d167b1034c31a8f8c954ae9a847b00 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4dd3fe2273435b504eeda02fee35d3f1 = $(`<div id="html_4dd3fe2273435b504eeda02fee35d3f1" style="width: 100.0%; height: 100.0%;">ダイナム日南店 Share: 0.07%</div>`)[0];
+                popup_49d167b1034c31a8f8c954ae9a847b00.setContent(html_4dd3fe2273435b504eeda02fee35d3f1);
+            
+        
+
+        circle_1f80f3431549fe5d4bb56e6df1e7fb7a.bindPopup(popup_49d167b1034c31a8f8c954ae9a847b00)
+        ;
+
+        
+    
+    
+            var circle_dafb699fb844adda0d8ab7d47b9def14 = L.circle(
+                [31.89457036, 131.4183746],
+                {"bubblingMouseEvents": true, "color": "#c80723ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c80723ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_0ef4987aacc30a6aad5876bfe29d6f97 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7854d684b147a4d64eb1ffd50646795d = $(`<div id="html_7854d684b147a4d64eb1ffd50646795d" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９大淀店 Share: 5.99%</div>`)[0];
+                popup_0ef4987aacc30a6aad5876bfe29d6f97.setContent(html_7854d684b147a4d64eb1ffd50646795d);
+            
+        
+
+        circle_dafb699fb844adda0d8ab7d47b9def14.bindPopup(popup_0ef4987aacc30a6aad5876bfe29d6f97)
+        ;
+
+        
+    
+    
+            var circle_b371349921898992875b5ee3ba811713 = L.circle(
+                [32.58663234, 131.6704163],
+                {"bubblingMouseEvents": true, "color": "#ffffcbff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcbff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_a1c0a7fe3552613651814a4ba96d61d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_12dc0b4c8396a71b462c61b6cfd41377 = $(`<div id="html_12dc0b4c8396a71b462c61b6cfd41377" style="width: 100.0%; height: 100.0%;">サンクス恵比須店 Share: 0.02%</div>`)[0];
+                popup_a1c0a7fe3552613651814a4ba96d61d3.setContent(html_12dc0b4c8396a71b462c61b6cfd41377);
+            
+        
+
+        circle_b371349921898992875b5ee3ba811713.bindPopup(popup_a1c0a7fe3552613651814a4ba96d61d3)
+        ;
+
+        
+    
+    
+            var circle_ef44e90af2e548d0f332b1cba70bed27 = L.circle(
+                [31.73524983, 131.0729215],
+                {"bubblingMouseEvents": true, "color": "#fffdc5ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc5ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_5572e0aadeb0c68cc7ad5764c7be661b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5f98c6b1aff92edfdcefb27895a4c34f = $(`<div id="html_5f98c6b1aff92edfdcefb27895a4c34f" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９都城駅前店 Share: 0.14%</div>`)[0];
+                popup_5572e0aadeb0c68cc7ad5764c7be661b.setContent(html_5f98c6b1aff92edfdcefb27895a4c34f);
+            
+        
+
+        circle_ef44e90af2e548d0f332b1cba70bed27.bindPopup(popup_5572e0aadeb0c68cc7ad5764c7be661b)
+        ;
+
+        
+    
+    
+            var circle_5f1eb4fed0caf981d9645f8acdbd5511 = L.circle(
+                [31.84245567, 131.3415927],
+                {"bubblingMouseEvents": true, "color": "#fffabfff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffabfff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_e5df1f04e125f844b4f7eb945b9451fe = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f58b7f228345e092ac5ecedbe8425b7c = $(`<div id="html_f58b7f228345e092ac5ecedbe8425b7c" style="width: 100.0%; height: 100.0%;">シリウス清武店 Share: 0.27%</div>`)[0];
+                popup_e5df1f04e125f844b4f7eb945b9451fe.setContent(html_f58b7f228345e092ac5ecedbe8425b7c);
+            
+        
+
+        circle_5f1eb4fed0caf981d9645f8acdbd5511.bindPopup(popup_e5df1f04e125f844b4f7eb945b9451fe)
+        ;
+
+        
+    
+    
+            var circle_c8c7502d3891a7783dac34a162de9d06 = L.circle(
+                [31.88728724, 131.4125986],
+                {"bubblingMouseEvents": true, "color": "#ffe084ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe084ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_f7f2abad48aabd453715bc8aaef7e5fd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a101f3c3b5ff8ee60475f1159315ec69 = $(`<div id="html_a101f3c3b5ff8ee60475f1159315ec69" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１南宮崎店 Share: 1.48%</div>`)[0];
+                popup_f7f2abad48aabd453715bc8aaef7e5fd.setContent(html_a101f3c3b5ff8ee60475f1159315ec69);
+            
+        
+
+        circle_c8c7502d3891a7783dac34a162de9d06.bindPopup(popup_f7f2abad48aabd453715bc8aaef7e5fd)
+        ;
+
+        
+    
+    
+            var circle_043c4037caec50c77f0a6e927ef3e17d = L.circle(
+                [32.42614056, 131.6514968],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_bc0e7c0fb01767e4795e74f4843c9a56 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1ff6f61eae70c99643451b3ac3d6959a = $(`<div id="html_1ff6f61eae70c99643451b3ac3d6959a" style="width: 100.0%; height: 100.0%;">Ｓｕｐｅｒ　Ｄ’ｓｔａｔｉｏｎ３９日向店 Share: 0.10%</div>`)[0];
+                popup_bc0e7c0fb01767e4795e74f4843c9a56.setContent(html_1ff6f61eae70c99643451b3ac3d6959a);
+            
+        
+
+        circle_043c4037caec50c77f0a6e927ef3e17d.bindPopup(popup_bc0e7c0fb01767e4795e74f4843c9a56)
+        ;
+
+        
+    
+    
+            var circle_220bc52d1f710b6a03001c7f141a2721 = L.circle(
+                [32.46877817, 131.6493725],
+                {"bubblingMouseEvents": true, "color": "#fffecaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffecaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_4d76b13548be42445c5038bb1fd4f9ed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_25372c6846171636aee3d3056a71d6e8 = $(`<div id="html_25372c6846171636aee3d3056a71d6e8" style="width: 100.0%; height: 100.0%;">西の丸門川店 Share: 0.05%</div>`)[0];
+                popup_4d76b13548be42445c5038bb1fd4f9ed.setContent(html_25372c6846171636aee3d3056a71d6e8);
+            
+        
+
+        circle_220bc52d1f710b6a03001c7f141a2721.bindPopup(popup_4d76b13548be42445c5038bb1fd4f9ed)
+        ;
+
+        
+    
+    
+            var circle_c9574eb2918a25afbfa00cb294d5c654 = L.circle(
+                [32.42367595, 131.6292735],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_9672764947168780f679aa06751313fa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9e52d8ba1dc637f3ea90b90e655a6339 = $(`<div id="html_9e52d8ba1dc637f3ea90b90e655a6339" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１日向店 Share: 0.08%</div>`)[0];
+                popup_9672764947168780f679aa06751313fa.setContent(html_9e52d8ba1dc637f3ea90b90e655a6339);
+            
+        
+
+        circle_c9574eb2918a25afbfa00cb294d5c654.bindPopup(popup_9672764947168780f679aa06751313fa)
+        ;
+
+        
+    
+    
+            var circle_2e06239c8995159dd52a80675f64e924 = L.circle(
+                [31.91264082, 131.4535983],
+                {"bubblingMouseEvents": true, "color": "#fed975ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed975ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_2a21cd9c5fc60fc95206aea083aedd9b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cff0d6397659d8e2b5a3597ef6557008 = $(`<div id="html_cff0d6397659d8e2b5a3597ef6557008" style="width: 100.0%; height: 100.0%;">シルバーバック宮崎みなと店 Share: 1.80%</div>`)[0];
+                popup_2a21cd9c5fc60fc95206aea083aedd9b.setContent(html_cff0d6397659d8e2b5a3597ef6557008);
+            
+        
+
+        circle_2e06239c8995159dd52a80675f64e924.bindPopup(popup_2a21cd9c5fc60fc95206aea083aedd9b)
+        ;
+
+        
+    
+    
+            var circle_09af9681e741fc9a53b38b10ea1a442a = L.circle(
+                [32.56176705, 131.6773778],
+                {"bubblingMouseEvents": true, "color": "#fffec9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_8da25e367a5e2260449f410a00aab004 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_58f7c3ab9ab6f3676aaf4830f1b58e6b = $(`<div id="html_58f7c3ab9ab6f3676aaf4830f1b58e6b" style="width: 100.0%; height: 100.0%;">オーパス延岡店 Share: 0.06%</div>`)[0];
+                popup_8da25e367a5e2260449f410a00aab004.setContent(html_58f7c3ab9ab6f3676aaf4830f1b58e6b);
+            
+        
+
+        circle_09af9681e741fc9a53b38b10ea1a442a.bindPopup(popup_8da25e367a5e2260449f410a00aab004)
+        ;
+
+        
+    
+    
+            var circle_96c3e4abc67a8513add891c7f8f860c6 = L.circle(
+                [32.42681237, 131.6497353],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_077b96c155e1dce4f00a7f4ee88753fb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_39e7769567e4d02ac5218f88e630c920 = $(`<div id="html_39e7769567e4d02ac5218f88e630c920" style="width: 100.0%; height: 100.0%;">シルバーバック日向店 Share: 0.08%</div>`)[0];
+                popup_077b96c155e1dce4f00a7f4ee88753fb.setContent(html_39e7769567e4d02ac5218f88e630c920);
+            
+        
+
+        circle_96c3e4abc67a8513add891c7f8f860c6.bindPopup(popup_077b96c155e1dce4f00a7f4ee88753fb)
+        ;
+
+        
+    
+    
+            var circle_d8eec32a2f47420168bafab2f44ef169 = L.circle(
+                [32.42367595, 131.6292735],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_4178a6962afb671e3131cf8eb7d43aa8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e40b0e500e7e9b8f1296339a54ac2310 = $(`<div id="html_e40b0e500e7e9b8f1296339a54ac2310" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１日向店 Share: 0.08%</div>`)[0];
+                popup_4178a6962afb671e3131cf8eb7d43aa8.setContent(html_e40b0e500e7e9b8f1296339a54ac2310);
+            
+        
+
+        circle_d8eec32a2f47420168bafab2f44ef169.bindPopup(popup_4178a6962afb671e3131cf8eb7d43aa8)
+        ;
+
+        
+    
+    
+            var circle_1a0396c987e608dc85b3bec4da51cfe5 = L.circle(
+                [32.42367595, 131.6292735],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_f5f0ae25a309809a8f144dffcb3cbea9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4d1e66c087a3e893bdfc5014f7093917 = $(`<div id="html_4d1e66c087a3e893bdfc5014f7093917" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１日向店 Share: 0.08%</div>`)[0];
+                popup_f5f0ae25a309809a8f144dffcb3cbea9.setContent(html_4d1e66c087a3e893bdfc5014f7093917);
+            
+        
+
+        circle_1a0396c987e608dc85b3bec4da51cfe5.bindPopup(popup_f5f0ae25a309809a8f144dffcb3cbea9)
+        ;
+
+        
+    
+    
+            var circle_176760af5ffcd5c9d2758b3b4821f24c = L.circle(
+                [32.54701305, 131.6768808],
+                {"bubblingMouseEvents": true, "color": "#ffffcaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_85b4105f879a2b61ab3aca324ff98068 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8dd8bed2f6bee8fc86438fd8c4951bfa = $(`<div id="html_8dd8bed2f6bee8fc86438fd8c4951bfa" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１南延岡店 Share: 0.05%</div>`)[0];
+                popup_85b4105f879a2b61ab3aca324ff98068.setContent(html_8dd8bed2f6bee8fc86438fd8c4951bfa);
+            
+        
+
+        circle_176760af5ffcd5c9d2758b3b4821f24c.bindPopup(popup_85b4105f879a2b61ab3aca324ff98068)
+        ;
+
+        
+    
+    
+            var circle_5f292ffa64785cf179ee4dd1a62fe184 = L.circle(
+                [32.00214773, 131.4687399],
+                {"bubblingMouseEvents": true, "color": "#fff6b5ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff6b5ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_ce84c34249fabcf2b4f3042e6b31d09d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_175bf54b79e7c910aea99c0ab805c13a = $(`<div id="html_175bf54b79e7c910aea99c0ab805c13a" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１佐土原店 Share: 0.46%</div>`)[0];
+                popup_ce84c34249fabcf2b4f3042e6b31d09d.setContent(html_175bf54b79e7c910aea99c0ab805c13a);
+            
+        
+
+        circle_5f292ffa64785cf179ee4dd1a62fe184.bindPopup(popup_ce84c34249fabcf2b4f3042e6b31d09d)
+        ;
+
+        
+    
+    
+            var circle_4077015026dd4a36235f6fc085d40144 = L.circle(
+                [31.88728724, 131.4125986],
+                {"bubblingMouseEvents": true, "color": "#ffe084ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe084ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_b26725763b94256e067d8ca1b4ad5a13 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_efd4cb9b53b78af08cf711c045a8dd9c = $(`<div id="html_efd4cb9b53b78af08cf711c045a8dd9c" style="width: 100.0%; height: 100.0%;">ＣＯＲＥ２１南宮崎店 Share: 1.48%</div>`)[0];
+                popup_b26725763b94256e067d8ca1b4ad5a13.setContent(html_efd4cb9b53b78af08cf711c045a8dd9c);
+            
+        
+
+        circle_4077015026dd4a36235f6fc085d40144.bindPopup(popup_b26725763b94256e067d8ca1b4ad5a13)
+        ;
+
+        
+    
+    
+            var circle_e4f57a5a8d8cd35cbb9a2404674f4c24 = L.circle(
+                [31.9173525, 131.4305987],
+                {"bubblingMouseEvents": true, "color": "#e9261fff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e9261fff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_c912ebc2f4a89b83c4a553182c53332d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_82da697b7a7e5b772c8ad9e994fa9d0e = $(`<div id="html_82da697b7a7e5b772c8ad9e994fa9d0e" style="width: 100.0%; height: 100.0%;">モナコパレス１０００宮崎駅前店 Share: 5.14%</div>`)[0];
+                popup_c912ebc2f4a89b83c4a553182c53332d.setContent(html_82da697b7a7e5b772c8ad9e994fa9d0e);
+            
+        
+
+        circle_e4f57a5a8d8cd35cbb9a2404674f4c24.bindPopup(popup_c912ebc2f4a89b83c4a553182c53332d)
+        ;
+
+        
+    
+    
+            var circle_e7fd25a25dfd8a9437deb5b9a178957e = L.circle(
+                [31.95214937, 131.4331344],
+                {"bubblingMouseEvents": true, "color": "#ffe996ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe996ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_3712ee74cb86ab51b35cecced15e8bb8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0963ab4c665ec0a2a014b967e89f865c = $(`<div id="html_0963ab4c665ec0a2a014b967e89f865c" style="width: 100.0%; height: 100.0%;">パーラーエービーシー花ヶ島店 Share: 1.11%</div>`)[0];
+                popup_3712ee74cb86ab51b35cecced15e8bb8.setContent(html_0963ab4c665ec0a2a014b967e89f865c);
+            
+        
+
+        circle_e7fd25a25dfd8a9437deb5b9a178957e.bindPopup(popup_3712ee74cb86ab51b35cecced15e8bb8)
+        ;
+
+        
+    
+    
+            var circle_30f2baf7e41dfb04b859e45133d586d4 = L.circle(
+                [32.11900881, 131.5241065],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_a238622aae13a82e4ae093e4629754ce = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_19c567b7e8695512b2add4c7b6bd67bd = $(`<div id="html_19c567b7e8695512b2add4c7b6bd67bd" style="width: 100.0%; height: 100.0%;">エーワンリンク高鍋店 Share: 0.10%</div>`)[0];
+                popup_a238622aae13a82e4ae093e4629754ce.setContent(html_19c567b7e8695512b2add4c7b6bd67bd);
+            
+        
+
+        circle_30f2baf7e41dfb04b859e45133d586d4.bindPopup(popup_a238622aae13a82e4ae093e4629754ce)
+        ;
+
+        
+    
+    
+            var circle_5d641b59507748eb0ced17f3f22994c5 = L.circle(
+                [31.5979136, 131.3861231],
+                {"bubblingMouseEvents": true, "color": "#fffec8ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec8ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_300965e45d66c1c7c1959a3c77e3b98f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_763991494bb2d638acdbd882254eae30 = $(`<div id="html_763991494bb2d638acdbd882254eae30" style="width: 100.0%; height: 100.0%;">オーパス日南店 Share: 0.09%</div>`)[0];
+                popup_300965e45d66c1c7c1959a3c77e3b98f.setContent(html_763991494bb2d638acdbd882254eae30);
+            
+        
+
+        circle_5d641b59507748eb0ced17f3f22994c5.bindPopup(popup_300965e45d66c1c7c1959a3c77e3b98f)
+        ;
+
+        
+    
+    
+            var circle_f8e88ea358df8287077616d7d67322f3 = L.circle(
+                [31.7063523, 131.0357521],
+                {"bubblingMouseEvents": true, "color": "#fffec9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_26dd7c576f25b404a2c2587e433771ad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_83667a37b690aa0aafefff4e4d0b496d = $(`<div id="html_83667a37b690aa0aafefff4e4d0b496d" style="width: 100.0%; height: 100.0%;">ダイナム都城南店 Share: 0.06%</div>`)[0];
+                popup_26dd7c576f25b404a2c2587e433771ad.setContent(html_83667a37b690aa0aafefff4e4d0b496d);
+            
+        
+
+        circle_f8e88ea358df8287077616d7d67322f3.bindPopup(popup_26dd7c576f25b404a2c2587e433771ad)
+        ;
+
+        
+    
+    
+            var circle_29b39f57665b13c1e877dba0359f3eae = L.circle(
+                [31.73318754, 131.1079707],
+                {"bubblingMouseEvents": true, "color": "#fffec9ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffec9ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_519f7c367cc071e19818871458158502 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_818cb892c4a4bbe96f002b150a717d51 = $(`<div id="html_818cb892c4a4bbe96f002b150a717d51" style="width: 100.0%; height: 100.0%;">シルバーバック低貸専門三股店 Share: 0.08%</div>`)[0];
+                popup_519f7c367cc071e19818871458158502.setContent(html_818cb892c4a4bbe96f002b150a717d51);
+            
+        
+
+        circle_29b39f57665b13c1e877dba0359f3eae.bindPopup(popup_519f7c367cc071e19818871458158502)
+        ;
+
+        
+    
+    
+            var circle_e9ffddf54cc55a12271287109887e8bf = L.circle(
+                [31.91465403, 131.4560265],
+                {"bubblingMouseEvents": true, "color": "#ffea99ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffea99ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_80f9a4277c21e637342dd4cc340003e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_66a81810dbe6a104d90b34a0d0760547 = $(`<div id="html_66a81810dbe6a104d90b34a0d0760547" style="width: 100.0%; height: 100.0%;">ダイナム宮崎昭栄店 Share: 1.05%</div>`)[0];
+                popup_80f9a4277c21e637342dd4cc340003e7.setContent(html_66a81810dbe6a104d90b34a0d0760547);
+            
+        
+
+        circle_e9ffddf54cc55a12271287109887e8bf.bindPopup(popup_80f9a4277c21e637342dd4cc340003e7)
+        ;
+
+        
+    
+    
+            var circle_29cc3340d0cedb6599493d9fd4f4e9af = L.circle(
+                [31.91264082, 131.4535983],
+                {"bubblingMouseEvents": true, "color": "#fed975ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fed975ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_dbbd71290640e9bb7d4ccfe26417b055 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c07f756e3e5e285b3a3967f374c30cc1 = $(`<div id="html_c07f756e3e5e285b3a3967f374c30cc1" style="width: 100.0%; height: 100.0%;">シルバーバック宮崎みなと店 Share: 1.80%</div>`)[0];
+                popup_dbbd71290640e9bb7d4ccfe26417b055.setContent(html_c07f756e3e5e285b3a3967f374c30cc1);
+            
+        
+
+        circle_29cc3340d0cedb6599493d9fd4f4e9af.bindPopup(popup_dbbd71290640e9bb7d4ccfe26417b055)
+        ;
+
+        
+    
+    
+            var circle_3ad4249091f30c51e38fe934aa29275e = L.circle(
+                [31.91945636, 131.4317892],
+                {"bubblingMouseEvents": true, "color": "#fea445ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fea445ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_6e0ce0db36f0593916413e968d3dd7bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bc75fa7fc83ef39171e1a7fa50411084 = $(`<div id="html_bc75fa7fc83ef39171e1a7fa50411084" style="width: 100.0%; height: 100.0%;">オーパス宮崎本店 Share: 3.03%</div>`)[0];
+                popup_6e0ce0db36f0593916413e968d3dd7bc.setContent(html_bc75fa7fc83ef39171e1a7fa50411084);
+            
+        
+
+        circle_3ad4249091f30c51e38fe934aa29275e.bindPopup(popup_6e0ce0db36f0593916413e968d3dd7bc)
+        ;
+
+        
+    
+    
+            var circle_9941335d02721a5617ed746327e6bdca = L.circle(
+                [32.55846554, 131.6765902],
+                {"bubblingMouseEvents": true, "color": "#ffffcbff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcbff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_9058c12c13f6a6d65b0978417125c1e6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_57b8e0b27cf28553120108b8bf9b7fb6 = $(`<div id="html_57b8e0b27cf28553120108b8bf9b7fb6" style="width: 100.0%; height: 100.0%;">西の丸延岡店 Share: 0.03%</div>`)[0];
+                popup_9058c12c13f6a6d65b0978417125c1e6.setContent(html_57b8e0b27cf28553120108b8bf9b7fb6);
+            
+        
+
+        circle_9941335d02721a5617ed746327e6bdca.bindPopup(popup_9058c12c13f6a6d65b0978417125c1e6)
+        ;
+
+        
+    
+    
+            var circle_fd616dbc9858ad5d66db905e06616344 = L.circle(
+                [32.4078586, 131.6234805],
+                {"bubblingMouseEvents": true, "color": "#fffecaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffecaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_d8899516171025609930a29bb61b1959 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4d7135a4a23461d99ef714b0688a6421 = $(`<div id="html_4d7135a4a23461d99ef714b0688a6421" style="width: 100.0%; height: 100.0%;">ダイナム宮崎日向財光寺店 Share: 0.05%</div>`)[0];
+                popup_d8899516171025609930a29bb61b1959.setContent(html_4d7135a4a23461d99ef714b0688a6421);
+            
+        
+
+        circle_fd616dbc9858ad5d66db905e06616344.bindPopup(popup_d8899516171025609930a29bb61b1959)
+        ;
+
+        
+    
+    
+            var circle_e129aff11078b33f4e7e608177fba970 = L.circle(
+                [32.2264721, 131.5457397],
+                {"bubblingMouseEvents": true, "color": "#ffffcaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_3abf4fe42aa44159b43accd07f076352 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f81266fdb4ee99b94f0e7faf954a672 = $(`<div id="html_8f81266fdb4ee99b94f0e7faf954a672" style="width: 100.0%; height: 100.0%;">西の丸川南店 Share: 0.04%</div>`)[0];
+                popup_3abf4fe42aa44159b43accd07f076352.setContent(html_8f81266fdb4ee99b94f0e7faf954a672);
+            
+        
+
+        circle_e129aff11078b33f4e7e608177fba970.bindPopup(popup_3abf4fe42aa44159b43accd07f076352)
+        ;
+
+        
+    
+    
+            var circle_dac4e93c3cfe09395f221680c12b7f70 = L.circle(
+                [32.4078586, 131.6234805],
+                {"bubblingMouseEvents": true, "color": "#fffecaff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffecaff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_d8f94265e20f359c72989d767f3ee5e5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d32515b4ecee4d6e9a58c26178228e1 = $(`<div id="html_5d32515b4ecee4d6e9a58c26178228e1" style="width: 100.0%; height: 100.0%;">ダイナム宮崎日向財光寺店 Share: 0.05%</div>`)[0];
+                popup_d8f94265e20f359c72989d767f3ee5e5.setContent(html_5d32515b4ecee4d6e9a58c26178228e1);
+            
+        
+
+        circle_dac4e93c3cfe09395f221680c12b7f70.bindPopup(popup_d8f94265e20f359c72989d767f3ee5e5)
+        ;
+
+        
+    
+    
+            var circle_e96b225c585dde81e77035fff6466161 = L.circle(
+                [31.70578625, 131.0592102],
+                {"bubblingMouseEvents": true, "color": "#fffdc7ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fffdc7ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_a1f2d169168601f4233ed43e1bdd28f0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_debc7f22416f264d5e3dbd4657bdfd12 = $(`<div id="html_debc7f22416f264d5e3dbd4657bdfd12" style="width: 100.0%; height: 100.0%;">マルハン都城南店 Share: 0.10%</div>`)[0];
+                popup_a1f2d169168601f4233ed43e1bdd28f0.setContent(html_debc7f22416f264d5e3dbd4657bdfd12);
+            
+        
+
+        circle_e96b225c585dde81e77035fff6466161.bindPopup(popup_a1f2d169168601f4233ed43e1bdd28f0)
+        ;
+
+        
+    
+    
+            var circle_7d38e83829cfb5d5cbf05b02ed505937 = L.circle(
+                [32.04953922, 130.8352836],
+                {"bubblingMouseEvents": true, "color": "#ffffcbff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffcbff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_204410dfce4440921c03734a647fff8c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f6728516d933c690310cac3b107036b = $(`<div id="html_6f6728516d933c690310cac3b107036b" style="width: 100.0%; height: 100.0%;">ＶＥＧＡ　えびの Share: 0.04%</div>`)[0];
+                popup_204410dfce4440921c03734a647fff8c.setContent(html_6f6728516d933c690310cac3b107036b);
+            
+        
+
+        circle_7d38e83829cfb5d5cbf05b02ed505937.bindPopup(popup_204410dfce4440921c03734a647fff8c)
+        ;
+
+        
+    
+    
+            var circle_1d9c371e48230eea9645c10469fa6b67 = L.circle(
+                [31.91465403, 131.4560265],
+                {"bubblingMouseEvents": true, "color": "#ffea99ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffea99ff", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200, "stroke": true, "weight": 3}
+            ).addTo(map_fc261e0769cc1ccdc150f13d7c13caa3);
+        
+    
+        var popup_4193f43afa34ad64d4c640aa8d21992e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_37c9432582e8fa4a0f3e19d00d1f52c8 = $(`<div id="html_37c9432582e8fa4a0f3e19d00d1f52c8" style="width: 100.0%; height: 100.0%;">ダイナム宮崎昭栄店 Share: 1.05%</div>`)[0];
+                popup_4193f43afa34ad64d4c640aa8d21992e.setContent(html_37c9432582e8fa4a0f3e19d00d1f52c8);
+            
+        
+
+        circle_1d9c371e48230eea9645c10469fa6b67.bindPopup(popup_4193f43afa34ad64d4c640aa8d21992e)
+        ;
+
+        
+    
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ようこそ | MIRAL</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('haikei.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 60px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      transition: all 1s ease-out;
+    }
+    .overlay.hidden {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    h1 {
+      font-size: 40px;
+      margin: 0;
+    }
+    p {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay" id="welcome">
+    <h1>ようこそ、MIRALへ</h1>
+    <p>ログインありがとうございます</p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("welcome").classList.add("hidden");
+    }, 1000);
+  </script>
+</body>
+</html>
